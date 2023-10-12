@@ -1,0 +1,24 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  h1 {
+    font-weight: 600;
+    font-size: 50px;
+  }
+}
+
+.pic {
+
+  img {
+    width: 50px;
+  }
+}
