@@ -1,7 +1,6 @@
 import s from './page.module.scss';
 
-import Book from '../../components/Book';
-import Button from '../../components/Button';
+import MainSection from '../../components/MainSection';
 
 export default function Home() {
   return (
@@ -12,16 +11,7 @@ export default function Home() {
         </div>
         <h1>My books</h1>
       </div>
-      <div className={s.content}>
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Button />
-      </div>
+      <MainSection />
     </main>
   );
 }

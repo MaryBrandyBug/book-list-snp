@@ -1,0 +1,70 @@
+@import '../../src/app/styles/colors.scss';
+
+.root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: $skyBlue;
+}
+
+.content {
+  position: relative;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  width: 40%;
+  height: 55%;
+  background-color: $white;
+  border-radius: 50px;
+  box-shadow: 13px 14px 29px -15px rgba($black, 0.75);
+}
+
+.header {
+  h2 {
+    font-weight: 400;
+    font-size: 35px;
+  }
+}
+
+.container {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.btnContainer {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    border: 2px solid $black;
+  }
+}
+
+.saveBtn {
+  background-color: $lightGreen;
+}
+
+.cancelBtn {
+  background-color: $lightRed;
+}
