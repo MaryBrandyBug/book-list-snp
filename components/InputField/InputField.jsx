@@ -1,3 +1,5 @@
+'use client';
+
 import cx from 'classnames/bind';
 import { string, func } from 'prop-types';
 import s from './inputField.module.scss';

@@ -1,3 +1,5 @@
+'use client';
+
 import { func } from 'prop-types';
 import Button from '../Button';
 import s from './modal.module.scss';
