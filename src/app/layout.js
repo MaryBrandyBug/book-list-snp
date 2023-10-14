@@ -1,6 +1,7 @@
 import './styles/globals.scss';
 import './styles/reset.scss';
 import { Comfortaa } from 'next/font/google';
+import { node } from 'prop-types';
 
 const comfortaa = Comfortaa({ subsets: ['cyrillic'] });
 
@@ -16,3 +17,7 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+RootLayout.propTypes = {
+  children: node.isRequired,
+};

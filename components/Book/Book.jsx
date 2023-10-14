@@ -1,10 +1,20 @@
 'use client';
 
+import { useState } from 'react';
 import s from './book.module.scss';
+import Modal from '../Modal';
+import Button from '../Button';
 
 export default function Book() {
+  const [openModal, setOpenModal] = useState(false);
+
+  const showModal = () => {
+    setOpenModal(true);
+  };
+
   return (
     <div className={s.root}>
+      {openModal && <Modal onClick={setOpenModal} />}
       <div className={s.header}>
         <h2>Название</h2>
       </div>
@@ -14,8 +24,8 @@ export default function Book() {
           <p className={s.info}>Год</p>
         </div>
         <div className={s.footer}>
-          <button className={s.btn} type="button"><img src="/edit.svg" alt="edit icon" /></button>
-          <button className={s.btn} type="button"><img src="/eye.svg" alt="eye icon" /></button>
+          <Button img="/edit.svg" alt="edit icon" />
+          <Button img="/eye.svg" alt="zoom icon" onClick={showModal} />
         </div>
       </div>
     </div>
