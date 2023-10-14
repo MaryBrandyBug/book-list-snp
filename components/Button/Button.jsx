@@ -5,7 +5,7 @@ import cx from 'classnames';
 import s from './button.module.scss';
 
 export default function Button({
-  type, img, text, alt, className, imgClassName, onClick,
+  type = 'button', img, text, alt, className, imgClassName, onClick,
 }) {
   const handleClick = () => {
     if (onClick) {
@@ -20,10 +20,6 @@ export default function Button({
     </button>
   );
 }
-
-Button.defaultProps = {
-  type: 'button',
-};
 
 Button.propTypes = {
   type: string,
