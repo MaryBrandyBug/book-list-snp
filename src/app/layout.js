@@ -2,6 +2,7 @@ import './styles/globals.scss';
 import './styles/reset.scss';
 import { Comfortaa } from 'next/font/google';
 import { node } from 'prop-types';
+import ReduxProvider from '@/redux/store/Provider';
 
 const comfortaa = Comfortaa({ subsets: ['cyrillic'] });
 
@@ -13,7 +14,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={comfortaa.className}>{children}</body>
+      <body className={comfortaa.className}>
+        <ReduxProvider>
+          {children}
+        </ReduxProvider>
+      </body>
     </html>
   );
 }

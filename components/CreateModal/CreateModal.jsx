@@ -2,15 +2,23 @@
 
 import { func } from 'prop-types';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addBook } from '@/redux/store/slicer/bookSlicer';
 import Button from '../Button';
 import InputField from '../InputField';
 import s from './createModal.module.scss';
 
 export default function CreateModal({ onClick }) {
+  const dispatch = useDispatch();
   const [form, setForm] = useState({ title: '', author: '', year: '' });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleClick = () => {
+    dispatch(addBook(form));
+    onClick();
   };
 
   return (
@@ -25,7 +33,7 @@ export default function CreateModal({ onClick }) {
             <InputField type="text" name="author" placeholder="Aвтор" maxLength="60" value={form.author} onChange={handleChange} />
             <InputField type="number" name="year" placeholder="Год издания" value={form.year} onChange={handleChange} />
             <div className={s.btnContainer}>
-              <Button text="Сохранить" className={s.saveBtn} />
+              <Button text="Сохранить" className={s.saveBtn} onClick={handleClick} />
               <Button text="Отмена" className={s.cancelBtn} onClick={onClick} />
             </div>
           </form>

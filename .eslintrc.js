@@ -25,4 +25,14 @@ module.exports = {
     'react/button-has-type': 'off',
     'max-len': 'off',
   },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+        ],
+        extensions: ['.js', '.jsx', '.json'],
+      },
+    },
+  },
 };
