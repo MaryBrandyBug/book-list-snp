@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { string } from 'prop-types';
 import s from './book.module.scss';
 import Modal from '../Modal';
 import Button from '../Button';
 
-export default function Book() {
+export default function Book({
+  title, author, year,
+}) {
   const [openModal, setOpenModal] = useState(false);
 
   const showModal = () => {
@@ -14,14 +17,14 @@ export default function Book() {
 
   return (
     <div className={s.root}>
-      {openModal && <Modal onClick={setOpenModal} />}
+      {openModal && <Modal title={title} author={author} year={year} onClick={setOpenModal} />}
       <div className={s.header}>
-        <h2>Название</h2>
+        <h2>{title}</h2>
       </div>
       <div className={s.content}>
         <div className={s.container}>
-          <p className={s.info}>Автор</p>
-          <p className={s.info}>Год</p>
+          <p className={s.info}>{author}</p>
+          <p className={s.info}>{year}</p>
         </div>
         <div className={s.footer}>
           <Button img="/edit.svg" alt="edit icon" />
@@ -31,3 +34,9 @@ export default function Book() {
     </div>
   );
 }
+
+Book.propTypes = {
+  title: string.isRequired,
+  author: string.isRequired,
+  year: string.isRequired,
+};
