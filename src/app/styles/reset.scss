@@ -120,3 +120,7 @@ label {
 legend {
   display: block;
 }
+
+body::-webkit-scrollbar {
+  width: 0;
+}

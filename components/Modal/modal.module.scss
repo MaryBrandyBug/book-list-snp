@@ -1,14 +1,15 @@
-@import '../../src/app/styles/colors.scss';
+@import '@/app/styles/colors.scss';
+@import '@/app/styles/mixins.scss';
 
 .root {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: $skyBlue;
 }
 
@@ -20,7 +21,8 @@
   align-items: center;
   gap: 50px;
   width: 30%;
-  height: 50%;
+  min-width: 430px;
+  min-height: 500px;
   background-color: $white;
   border-radius: 50px;
   box-shadow: 13px 14px 29px -15px rgba($black, 0.75);
@@ -46,7 +48,7 @@
     width: 100%;
     overflow-wrap: break-word;
     font-weight: 400;
-    font-size: 35px;
+    font-size: 25px;
   }
 }
 
@@ -65,8 +67,33 @@
   overflow-wrap: break-word;
   white-space: normal;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 22px;
 }
+
+@include _580 {
+  .content {
+    padding: 70px 50px 50px 50px;
+    min-width: 90%;
+    min-height: 450px;
+  }
+
+  .block {
+    img {
+      width: 40px;
+    }
+  }
+
+  .header {
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  .info {
+    font-size: 16px;
+  }
+}
+
 
 
 
