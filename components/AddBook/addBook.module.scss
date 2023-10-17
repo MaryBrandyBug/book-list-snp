@@ -1,0 +1,99 @@
+@import '@/app/styles/mixins.scss';
+@import '@/app/styles/colors.scss';
+
+.addBtn {
+  position: absolute;
+  top: 15%;
+  left: 23%;
+
+  img {
+    width: 80px;
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 7%;
+  left: 19%;
+  width: 100px;
+  transform: rotate(110deg);
+}
+
+.arrowHeader {
+  position: absolute;
+  top: 5%;
+  left: 17%;
+  color: $gray;
+  font-size: 30px;
+  transform: rotate(8deg);
+}
+
+@include _1500 {
+  .arrow {
+    left: 15%;
+    transform: rotate(90deg);
+  }
+
+  .arrowHeader {
+    left: 2%;
+    transform: rotate(-10deg);
+  }
+
+  .addBtn {
+    top: 13%;
+  }
+}
+
+@include _1120 {
+  .addBtn {
+    left: 46%;
+  }
+
+  .arrow {
+    top: 11%;
+    left: 32%;
+    transform: rotate(80deg);
+  }
+
+  .arrowHeader {
+    top: 10%;
+    left: 11%;
+  }
+}
+
+@include _800 {
+  .arrow {
+    width: 90px;
+  }
+}
+
+@include _660 {
+  .addBtn {
+    top: 6.7%;
+
+    img {
+      width: 60px;
+    }
+  }
+
+  .arrow {
+    top: 5%;
+    width: 80px;
+    transform: rotate(100deg);
+  }
+
+  .arrowHeader {
+    top: 4.2%;
+    transform: rotate(10deg);
+  }
+}
+
+@include _550 {
+  .arrow {
+    left : 28%;
+  }
+
+  .arrowHeader {
+    font-size: 25px;
+  }
+}

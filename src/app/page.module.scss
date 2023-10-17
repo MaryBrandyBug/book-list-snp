@@ -1,8 +1,11 @@
+@import './styles/mixins.scss';
+
 .root {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 100px;
 }
 
 .header {
@@ -30,4 +33,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 50px;
+}
+
+@include _1120 {
+  .root {
+    gap: 170px;
+  }
 }
