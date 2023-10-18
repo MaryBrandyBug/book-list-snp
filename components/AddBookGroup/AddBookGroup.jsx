@@ -2,12 +2,12 @@
 
 import { caveat } from '@/app/styles/fonts';
 import { useState } from 'react';
-import s from './addBook.module.scss';
+import s from './addBookGroup.module.scss';
 
 import Button from '../Button';
 import CreateModal from '../CreateModal';
 
-export default function AddBook() {
+export default function addBookGroup() {
   const [openModal, setOpenModal] = useState(false);
 
   const showModal = () => {

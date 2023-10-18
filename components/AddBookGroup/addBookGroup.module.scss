@@ -40,7 +40,7 @@
   }
 
   .addBtn {
-    top: 13%;
+    top: 12%;
   }
 }
 
@@ -52,7 +52,7 @@
   .arrow {
     top: 11%;
     left: 32%;
-    transform: rotate(80deg);
+    transform: rotate(70deg);
   }
 
   .arrowHeader {
@@ -63,7 +63,7 @@
 
 @include _800 {
   .arrow {
-    width: 90px;
+    width: 80px;
   }
 }
 
@@ -78,7 +78,6 @@
 
   .arrow {
     top: 5%;
-    width: 80px;
     transform: rotate(100deg);
   }
 

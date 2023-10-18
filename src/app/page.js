@@ -1,7 +1,7 @@
 import s from './page.module.scss';
 
 import MainSection from '../../components/MainSection';
-import AddBook from '../../components/AddBook';
+import AddBookGroup from '../../components/AddBookGroup';
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
         </div>
         <h1>My books</h1>
       </div>
-      <AddBook />
+      <AddBookGroup />
       <MainSection />
     </main>
   );
