@@ -1,14 +1,15 @@
-@import '../../src/app/styles/colors.scss';
+@import '@/app/styles/colors.scss';
+@import '@/app/styles/mixins.scss';
 
 .root {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: $skyBlue;
 }
 
@@ -20,7 +21,7 @@
   align-items: center;
   gap: 50px;
   width: 40%;
-  height: 55%;
+  max-width: 770px;
   background-color: $white;
   border-radius: 50px;
   box-shadow: 13px 14px 29px -15px rgba($black, 0.75);
@@ -67,4 +68,33 @@
 
 .cancelBtn {
   background-color: $lightRed;
+}
+
+@include _1500 {
+  .content {
+    min-width: 600px;
+  }
+}
+
+@include _660 {
+  .content {
+    padding: 50px;
+    min-width: auto;
+    width: 90%;
+  }
+}
+
+@include _460 {
+  .header {
+    h2 {
+      font-size: 25px;
+    }
+  }
+
+  .btnContainer {
+    button {
+      width: 150px;
+      font-size: 14px;
+    }
+  }
 }
