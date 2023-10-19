@@ -1,25 +1,17 @@
 'use client';
 
 import { func } from 'prop-types';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBook } from '@/redux/store/slicer/bookSlicer';
+import {
+  ErrorMessage, Formik, Field, Form,
+} from 'formik';
 import Button from '../Button';
-import InputField from '../InputField';
 import s from './createModal.module.scss';
+import validationSchema from './validation';
 
 export default function CreateModal({ onClick }) {
   const dispatch = useDispatch();
-  const [form, setForm] = useState({ title: '', author: '', year: '' });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleClick = () => {
-    dispatch(addBook(form));
-    onClick();
-  };
 
   return (
     <div className={s.root}>
@@ -28,15 +20,35 @@ export default function CreateModal({ onClick }) {
           <h2>Новая книга</h2>
         </div>
         <div className={s.container}>
-          <form className={s.form}>
-            <InputField type="text" name="title" placeholder="Название" maxLength="60" value={form.title} onChange={handleChange} />
-            <InputField type="text" name="author" placeholder="Aвтор" maxLength="60" value={form.author} onChange={handleChange} />
-            <InputField type="number" name="year" placeholder="Год издания" value={form.year} onChange={handleChange} />
-            <div className={s.btnContainer}>
-              <Button text="Сохранить" className={s.saveBtn} onClick={handleClick} />
-              <Button text="Отмена" className={s.cancelBtn} onClick={onClick} />
-            </div>
-          </form>
+          <Formik
+            initialValues={{ title: '', author: '', year: '' }}
+            validationSchema={validationSchema}
+            onSubmit={(values, actions) => {
+              setTimeout(() => {
+                const isValid = validationSchema.isValid(values);
+                if (isValid) {
+                  dispatch(addBook(values));
+                  onClick();
+                }
+                actions.setSubmitting(false);
+              }, 300);
+            }}
+          >
+            { ({ handleSubmit }) => (
+              <Form className={s.form} onSubmit={handleSubmit}>
+                <Field type="text" name="title" placeholder="Название" maxLength="60" className={s.inputField} />
+                <ErrorMessage name="title" component="div" className={s.errorMessage} />
+                <Field type="text" name="author" placeholder="Aвтор" maxLength="60" className={s.inputField} />
+                <ErrorMessage name="author" component="div" className={s.errorMessage} />
+                <Field type="number" name="year" placeholder="Год издания" className={s.inputField} />
+                <ErrorMessage name="year" component="div" className={s.errorMessage} />
+                <div className={s.btnContainer}>
+                  <Button text="Сохранить" type="submit" className={s.saveBtn} />
+                  <Button text="Отмена" className={s.cancelBtn} onClick={onClick} />
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </div>

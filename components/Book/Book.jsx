@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { string } from 'prop-types';
+import { number, string } from 'prop-types';
 import cx from 'classnames';
 import s from './book.module.scss';
 import Modal from '../Modal';
@@ -39,5 +39,5 @@ export default function Book({
 Book.propTypes = {
   title: string.isRequired,
   author: string.isRequired,
-  year: string.isRequired,
+  year: number.isRequired,
 };
