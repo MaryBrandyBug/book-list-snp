@@ -36,12 +36,18 @@ export default function CreateModal({ onClick }) {
           >
             { ({ handleSubmit }) => (
               <Form className={s.form} onSubmit={handleSubmit}>
-                <Field type="text" name="title" placeholder="Название" maxLength="60" className={s.inputField} />
-                <ErrorMessage name="title" component="div" className={s.errorMessage} />
-                <Field type="text" name="author" placeholder="Aвтор" maxLength="60" className={s.inputField} />
-                <ErrorMessage name="author" component="div" className={s.errorMessage} />
-                <Field type="number" name="year" placeholder="Год издания" className={s.inputField} />
-                <ErrorMessage name="year" component="div" className={s.errorMessage} />
+                <div className={s.inputContainer}>
+                  <Field type="text" name="title" placeholder="Название" maxLength="60" className={s.inputField} />
+                  <ErrorMessage name="title" component="div" className={s.errorMessage} />
+                </div>
+                <div className={s.inputContainer}>
+                  <Field type="text" name="author" placeholder="Aвтор" maxLength="60" className={s.inputField} />
+                  <ErrorMessage name="author" component="div" className={s.errorMessage} />
+                </div>
+                <div className={s.inputContainer}>
+                  <Field type="number" name="year" placeholder="Год издания" className={s.inputField} />
+                  <ErrorMessage name="year" component="div" className={s.errorMessage} />
+                </div>
                 <div className={s.btnContainer}>
                   <Button text="Сохранить" type="submit" className={s.saveBtn} />
                   <Button text="Отмена" className={s.cancelBtn} onClick={onClick} />

@@ -1,6 +1,6 @@
 'use client';
 
-import { func, string } from 'prop-types';
+import { func, number, string } from 'prop-types';
 import Button from '../Button';
 import s from './modal.module.scss';
 
@@ -32,6 +32,6 @@ export default function Modal({
 Modal.propTypes = {
   title: string.isRequired,
   author: string.isRequired,
-  year: string.isRequired,
+  year: number.isRequired,
   onClick: func,
 };

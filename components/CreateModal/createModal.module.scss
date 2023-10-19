@@ -58,6 +58,13 @@
   gap: 30px;
 }
 
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 .btnContainer {
   padding-top: 20px;
   display: flex;
