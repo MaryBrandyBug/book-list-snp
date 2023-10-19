@@ -8,6 +8,6 @@ export default yup.object().shape({
     .max(new Date().getFullYear(), 'Этот год еще не наступил :( попробуйте еще раз')
     .test('not-starts-with-zero', 'Год не может начинаться с 0', (value) => {
       const yearAsString = value.toString();
-      return yearAsString.charAt(0) !== '0';
+      return yearAsString.charAt(0) === 0;
     }),
 });
