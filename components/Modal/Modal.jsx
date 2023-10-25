@@ -1,7 +1,6 @@
 'use client';
 
 import { func, number, string } from 'prop-types';
-// import Button from '../Button';
 import s from './modal.module.scss';
 import BookPreview from '../BookPreview';
 import CreateForm from '../CreateModal/CreateForm';
