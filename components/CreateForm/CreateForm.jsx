@@ -7,7 +7,7 @@ import {
   ErrorMessage, Formik, Field, Form,
 } from 'formik';
 import Button from '../Button';
-import s from './createModal.module.scss';
+import s from './createForm.module.scss';
 import validationSchema from './validation';
 
 export default function CreateForm({ onClick }) {

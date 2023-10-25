@@ -3,7 +3,7 @@
 import { func, number, string } from 'prop-types';
 import s from './modal.module.scss';
 import BookPreview from '../BookPreview';
-import CreateForm from '../CreateModal/CreateForm';
+import CreateForm from '../CreateForm';
 
 export default function Modal({
   title, author, year, onClick, modalType,
