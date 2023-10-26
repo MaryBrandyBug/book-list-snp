@@ -23,7 +23,7 @@ export default function Book({
   return (
     <div className={s.root}>
       {openPreviewModal && <Modal modalType="show book" title={title} author={author} year={year} onClick={setOpenPreviewModal} />}
-      {openEditModal && <Modal modalType="show book editor" id={id} />}
+      {openEditModal && <Modal modalType="show book editor" id={id} onClick={setOpenEditModal} />}
       <div className={s.header}>
         <h2>{title}</h2>
       </div>

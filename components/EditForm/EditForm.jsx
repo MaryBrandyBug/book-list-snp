@@ -19,29 +19,31 @@ export default function EditForm({ id, onClick }) {
       </div>
       <Button className={s.closeBtn} onClick={onClick} img="/close.svg" alt="close button icon" />
       <div className={s.container}>
-        <Formik initialValues={{ title: '', author: '', year: '' }}>
-          <Form className={s.form}>
-            <div className={s.inputContainer}>
-              <p className={s.inputName}>Название:</p>
-              <Field type="text" name="title" id="title" value={title} placeholder="Название" maxLength="60" className={s.inputField} />
-              <ErrorMessage name="title" component="div" className={s.errorMessage} />
-            </div>
-            <div className={s.inputContainer}>
-              <p className={s.inputName}>Автор:</p>
-              <Field type="text" name="author" value={author} placeholder="Aвтор" maxLength="60" className={s.inputField} />
-              <ErrorMessage name="author" component="div" className={s.errorMessage} />
-            </div>
-            <div className={s.inputContainer}>
-              <p className={s.inputName}>Год издания:</p>
-              <Field type="number" name="year" value={year} placeholder="Год издания" className={s.inputField} />
-              <ErrorMessage name="year" component="div" className={s.errorMessage} />
-            </div>
-            <div className={s.btnContainer}>
-              <Button text="Сохранить" type="submit" className={s.saveBtn} />
-              <Button text="Сброс" className={s.saveBtn} />
-              <Button text="Удалить" className={s.cancelBtn} />
-            </div>
-          </Form>
+        <Formik initialValues={{ title, author, year }}>
+          { ({ resetForm }) => (
+            <Form className={s.form}>
+              <div className={s.inputContainer}>
+                <p className={s.inputName}>Название:</p>
+                <Field type="text" name="title" id="title" placeholder="Название" maxLength="60" className={s.inputField} />
+                <ErrorMessage name="title" component="div" className={s.errorMessage} />
+              </div>
+              <div className={s.inputContainer}>
+                <p className={s.inputName}>Автор:</p>
+                <Field type="text" name="author" placeholder="Aвтор" maxLength="60" className={s.inputField} />
+                <ErrorMessage name="author" component="div" className={s.errorMessage} />
+              </div>
+              <div className={s.inputContainer}>
+                <p className={s.inputName}>Год издания:</p>
+                <Field type="number" name="year" placeholder="Год издания" className={s.inputField} />
+                <ErrorMessage name="year" component="div" className={s.errorMessage} />
+              </div>
+              <div className={s.btnContainer}>
+                <Button text="Сохранить" type="submit" className={s.saveBtn} />
+                <Button text="Сброс" type="reset" className={s.saveBtn} onClick={resetForm} />
+                <Button text="Удалить" className={s.cancelBtn} />
+              </div>
+            </Form>
+          )}
         </Formik>
       </div>
     </div>
