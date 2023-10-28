@@ -4,13 +4,15 @@ import { func, number } from 'prop-types';
 import {
   ErrorMessage, Field, Form, Formik,
 } from 'formik';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { editBook } from '@/redux/store/slicer/bookSlicer';
 import s from './editForm.module.scss';
 import Button from '../Button';
 
 export default function EditForm({ id, onClick }) {
-  const allBooks = useSelector((state) => state.books.books);
+  const allBooks = useSelector((state) => state.books);
   const { title, author, year } = allBooks.filter((item) => item.id === id)[0];
+  const dispatch = useDispatch();
 
   return (
     <div className={s.root}>
@@ -19,9 +21,21 @@ export default function EditForm({ id, onClick }) {
       </div>
       <Button className={s.closeBtn} onClick={onClick} img="/close.svg" alt="close button icon" />
       <div className={s.container}>
-        <Formik initialValues={{ title, author, year }}>
-          { ({ resetForm }) => (
-            <Form className={s.form}>
+        <Formik
+          initialValues={{ title, author, year }}
+          onSubmit={(values, actions) => {
+            setTimeout(() => {
+              dispatch(editBook({
+                values,
+                id,
+              }));
+              onClick();
+              actions.setSubmitting(false);
+            }, 300);
+          }}
+        >
+          { ({ handleSubmit, resetForm }) => (
+            <Form className={s.form} onSubmit={handleSubmit}>
               <div className={s.inputContainer}>
                 <p className={s.inputName}>Название:</p>
                 <Field type="text" name="title" id="title" placeholder="Название" maxLength="60" className={s.inputField} />
