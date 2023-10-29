@@ -6,6 +6,7 @@ import {
 } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { editBook } from '@/redux/store/slicer/bookSlicer';
+import validationSchema from '@/app/validation/validation';
 import s from './editForm.module.scss';
 import Button from '../Button';
 
@@ -23,13 +24,17 @@ export default function EditForm({ id, onClick }) {
       <div className={s.container}>
         <Formik
           initialValues={{ title, author, year }}
+          validationSchema={validationSchema}
           onSubmit={(values, actions) => {
             setTimeout(() => {
-              dispatch(editBook({
-                values,
-                id,
-              }));
-              onClick();
+              const isValid = validationSchema.isValid(values);
+              if (isValid) {
+                dispatch(editBook({
+                  values,
+                  id,
+                }));
+                onClick();
+              }
               actions.setSubmitting(false);
             }, 300);
           }}

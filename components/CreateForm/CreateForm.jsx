@@ -6,9 +6,9 @@ import { addBook } from '@/redux/store/slicer/bookSlicer';
 import {
   ErrorMessage, Formik, Field, Form,
 } from 'formik';
+import validationSchema from '@/app/validation/validation';
 import Button from '../Button';
 import s from './createForm.module.scss';
-import validationSchema from './validation';
 
 export default function CreateForm({ onClick }) {
   const dispatch = useDispatch();
