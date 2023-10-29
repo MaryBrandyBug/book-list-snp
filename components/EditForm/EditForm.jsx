@@ -5,7 +5,7 @@ import {
   ErrorMessage, Field, Form, Formik,
 } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { editBook } from '@/redux/store/slicer/bookSlicer';
+import { editBook, removeBook } from '@/redux/store/slicer/bookSlicer';
 import validationSchema from '@/app/validation/validation';
 import s from './editForm.module.scss';
 import Button from '../Button';
@@ -14,6 +14,11 @@ export default function EditForm({ id, onClick }) {
   const allBooks = useSelector((state) => state.books);
   const { title, author, year } = allBooks.filter((item) => item.id === id)[0];
   const dispatch = useDispatch();
+
+  const deleteCurrentBook = () => {
+    dispatch(removeBook({ id }));
+    onClick();
+  };
 
   return (
     <div className={s.root}>
@@ -59,7 +64,7 @@ export default function EditForm({ id, onClick }) {
               <div className={s.btnContainer}>
                 <Button text="Сохранить" type="submit" className={s.saveBtn} />
                 <Button text="Сброс" type="reset" className={s.saveBtn} onClick={resetForm} />
-                <Button text="Удалить" className={s.cancelBtn} />
+                <Button text="Удалить" className={s.cancelBtn} onClick={deleteCurrentBook} />
               </div>
             </Form>
           )}
