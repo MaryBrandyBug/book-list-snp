@@ -63,8 +63,8 @@ export default function EditForm({ id, onClick }) {
               </div>
               <div className={s.btnContainer}>
                 <Button text="Сохранить" type="submit" className={s.saveBtn} />
-                <Button text="Сброс" type="reset" className={s.saveBtn} onClick={resetForm} />
-                <Button text="Удалить" className={s.cancelBtn} onClick={deleteCurrentBook} />
+                <Button text="Сброс" type="reset" className={s.resetBtn} onClick={resetForm} />
+                <Button text="Удалить" className={s.removeBtn} onClick={deleteCurrentBook} />
               </div>
             </Form>
           )}
