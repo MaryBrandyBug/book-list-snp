@@ -25,6 +25,7 @@ module.exports = {
     'react/button-has-type': 'off',
     'max-len': 'off',
     'import/order': 'off',
+    'import/no-unresolved': 'off',
   },
   settings: {
     'import/resolver': {

@@ -1,5 +1,5 @@
-import MainSection from '../../components/MainSection';
-import AddBookGroup from '../../components/AddBookGroup';
+import MainSection from '@components/MainSection';
+import AddBookGroup from '@components/AddBookGroup';
 
 import s from './page.module.scss';
 
