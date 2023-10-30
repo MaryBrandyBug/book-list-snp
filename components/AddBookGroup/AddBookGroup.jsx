@@ -5,7 +5,6 @@ import { useState } from 'react';
 import s from './addBookGroup.module.scss';
 
 import Button from '../Button';
-// import CreateModal from '../CreateModal';
 import Modal from '../Modal';
 
 export default function addBookGroup() {
