@@ -24,6 +24,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/button-has-type': 'off',
     'max-len': 'off',
+    'import/order': 'off',
   },
   settings: {
     'import/resolver': {

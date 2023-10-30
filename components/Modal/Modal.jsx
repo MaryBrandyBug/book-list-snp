@@ -1,8 +1,10 @@
 'use client';
 
 import { func, number, string } from 'prop-types';
+
 import Button from '../Button';
-import s from './modal.module.scss';
+
+import s from './Modal.module.scss';
 
 export default function Modal({
   title, author, year, onClick,

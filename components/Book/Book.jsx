@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import { number, string } from 'prop-types';
 import cx from 'classnames';
-import s from './book.module.scss';
+
 import Modal from '../Modal';
 import Button from '../Button';
+
+import s from './Book.module.scss';
 
 export default function Book({
   title, author, year,

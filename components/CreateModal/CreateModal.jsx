@@ -1,14 +1,17 @@
 'use client';
 
-import { func } from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { addBook } from '@/redux/store/slicer/bookSlicer';
+import { func } from 'prop-types';
 import {
   ErrorMessage, Formik, Field, Form,
 } from 'formik';
-import Button from '../Button';
-import s from './createModal.module.scss';
+
+import { addBook } from '@/redux/store/slicer/bookSlicer';
 import validationSchema from './validation';
+
+import Button from '../Button';
+
+import s from './CreateModal.module.scss';
 
 export default function CreateModal({ onClick }) {
   const dispatch = useDispatch();

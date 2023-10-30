@@ -1,7 +1,7 @@
-import s from './page.module.scss';
-
 import MainSection from '../../components/MainSection';
 import AddBookGroup from '../../components/AddBookGroup';
+
+import s from './page.module.scss';
 
 export default function Home() {
   return (

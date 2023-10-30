@@ -1,11 +1,12 @@
 'use client';
 
-import { caveat } from '@/app/styles/fonts';
 import { useState } from 'react';
-import s from './addBookGroup.module.scss';
 
 import Button from '../Button';
 import CreateModal from '../CreateModal';
+
+import { caveat } from '@/app/styles/fonts';
+import s from './AddBookGroup.module.scss';
 
 export default function addBookGroup() {
   const [openModal, setOpenModal] = useState(false);

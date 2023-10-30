@@ -2,7 +2,8 @@
 
 import { func, string } from 'prop-types';
 import cx from 'classnames';
-import s from './button.module.scss';
+
+import s from './Button.module.scss';
 
 export default function Button({
   type = 'button', img, text, alt, className, imgClassName, onClick,

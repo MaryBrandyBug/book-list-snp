@@ -1,8 +1,10 @@
+import { node } from 'prop-types';
+
+import ReduxProvider from '@/redux/store/Provider';
+
+import { comfortaa } from './styles/fonts';
 import './styles/globals.scss';
 import './styles/reset.scss';
-import { node } from 'prop-types';
-import ReduxProvider from '@/redux/store/Provider';
-import { comfortaa } from './styles/fonts';
 
 export const metadata = {
   title: 'My Library',

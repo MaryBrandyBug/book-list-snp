@@ -3,6 +3,7 @@
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { node } from 'prop-types';
+
 import store, { persistor } from './store';
 
 export default function ReduxProvider({ children }) {

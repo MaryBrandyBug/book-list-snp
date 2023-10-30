@@ -1,8 +1,10 @@
 'use client';
 
 import { useSelector } from 'react-redux';
-import s from './mainSection.module.scss';
+
 import Book from '../Book';
+
+import s from './MainSection.module.scss';
 
 export default function MainSection() {
   const allBooks = useSelector((state) => state.books.books);
