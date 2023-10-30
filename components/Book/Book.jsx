@@ -2,23 +2,28 @@
 
 import { useState } from 'react';
 import { number, string } from 'prop-types';
-import cx from 'classnames';
 import s from './book.module.scss';
 import Modal from '../Modal';
 import Button from '../Button';
 
 export default function Book({
-  title, author, year,
+  title, author, year, id,
 }) {
-  const [openModal, setOpenModal] = useState(false);
+  const [openPreviewModal, setOpenPreviewModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
 
-  const showModal = () => {
-    setOpenModal(true);
+  const showPreview = () => {
+    setOpenPreviewModal(true);
+  };
+
+  const showEditor = () => {
+    setOpenEditModal(true);
   };
 
   return (
-    <div className={cx(s.root, { [s.modal]: openModal })}>
-      {openModal && <Modal title={title} author={author} year={year} onClick={setOpenModal} />}
+    <div className={s.root}>
+      {openPreviewModal && <Modal modalType="show book" title={title} author={author} year={year} onClick={setOpenPreviewModal} />}
+      {openEditModal && <Modal modalType="show book editor" id={id} onClick={setOpenEditModal} />}
       <div className={s.header}>
         <h2>{title}</h2>
       </div>
@@ -28,8 +33,8 @@ export default function Book({
           <p className={s.info}>{year}</p>
         </div>
         <div className={s.footer}>
-          <Button img="/edit.svg" alt="edit icon" />
-          <Button img="/eye.svg" alt="zoom icon" onClick={showModal} />
+          <Button img="/edit.svg" alt="edit icon" onClick={showEditor} />
+          <Button img="/eye.svg" alt="zoom icon" onClick={showPreview} />
         </div>
       </div>
     </div>
@@ -40,4 +45,5 @@ Book.propTypes = {
   title: string.isRequired,
   author: string.isRequired,
   year: number.isRequired,
+  id: number.isRequired,
 };

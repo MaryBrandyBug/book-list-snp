@@ -1,0 +1,83 @@
+@import '@/app/styles/colors.scss';
+@import '@/app/styles/mixins.scss';
+
+.root {
+  position: relative;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  width: 30%;
+  min-width: 430px;
+  min-height: 500px;
+  background-color: $white;
+  border-radius: 50px;
+  box-shadow: 13px 14px 29px -15px rgba($black, 0.75);
+
+  .closeBtn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  h2 {
+    width: 100%;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    font-size: 25px;
+  }
+}
+
+.block {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  img {
+    width: 50px;
+  }
+}
+
+.info {
+  width: 100%;
+  overflow-wrap: break-word;
+  white-space: normal;
+  font-weight: 400;
+  font-size: 22px;
+}
+
+@include _580 {
+  .root {
+    padding: 70px 50px 50px 50px;
+    min-width: 90%;
+    min-height: 450px;
+  }
+
+  .block {
+    img {
+      width: 40px;
+    }
+  }
+
+  .header {
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  .info {
+    font-size: 16px;
+  }
+}

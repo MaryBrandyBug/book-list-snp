@@ -2,18 +2,6 @@
 @import '@/app/styles/mixins.scss';
 
 .root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: $skyBlue;
-}
-
-.content {
   position: relative;
   padding: 70px;
   display: flex;
@@ -25,6 +13,16 @@
   background-color: $white;
   border-radius: 50px;
   box-shadow: 13px 14px 29px -15px rgba($black, 0.75);
+
+  .closeBtn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+}
+
+.container {
+  width: 100%;
 }
 
 .header {
@@ -32,6 +30,18 @@
     font-weight: 400;
     font-size: 35px;
   }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .inputField {
@@ -48,21 +58,9 @@
   margin: 0;
 }
 
-.container {
-  width: 100%;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.inputContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 10px;
+.errorMessage {
+  color: $pinkRose;
+  font-size: 18px;
 }
 
 .btnContainer {
@@ -87,39 +85,58 @@
   background-color: $lightGreen;
 }
 
-.cancelBtn {
+.resetBtn {
+  background-color: $pastelYellow;
+}
+
+.removeBtn {
   background-color: $lightRed;
 }
 
-.errorMessage {
-  color: $pinkRose;
-  font-size: 18px;
-}
-
 @include _1500 {
-  .content {
+  .root {
     min-width: 600px;
+  }
+
+  .btnContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 }
 
 @include _660 {
-  .content {
+  .root {
     padding: 50px;
     min-width: auto;
     width: 90%;
   }
-}
 
-@include _460 {
   .header {
     h2 {
-      font-size: 25px;
+      font-size: 30px;
     }
   }
 
   .btnContainer {
     button {
       width: 150px;
+    }
+  }
+}
+
+@include _460 {
+  .header {
+    h2 {
+      font-size: 20px;
+    }
+  }
+
+  .btnContainer {
+
+    button {
+      width: 105px;
       font-size: 14px;
     }
   }
