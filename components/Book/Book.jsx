@@ -8,6 +8,7 @@ import Modal from '../Modal';
 import Button from '../Button';
 
 import s from './Book.module.scss';
+import BookPreview from '@components/BookPreview';
 
 export default function Book({
   title, author, year,
@@ -20,7 +21,7 @@ export default function Book({
 
   return (
     <div className={cx(s.root, { [s.modal]: openModal })}>
-      {openModal && <Modal title={title} author={author} year={year} onClick={setOpenModal} />}
+      {openModal && <Modal content={<BookPreview title={title} author={author} year={year} onClick={setOpenModal} />} />}
       <div className={s.header}>
         <h2>{title}</h2>
       </div>
