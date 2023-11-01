@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { number, string } from 'prop-types';
-import cx from 'classnames';
 
 import Modal from '../Modal';
 import Button from '../Button';
@@ -20,7 +19,7 @@ export default function Book({
   };
 
   return (
-    <div className={cx(s.root)}>
+    <div className={s.root}>
       {openModal && <Modal content={<BookPreview title={title} author={author} year={year} onClick={setOpenModal} />} />}
       <div className={s.header}>
         <h2>{title}</h2>
