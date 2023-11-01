@@ -9,7 +9,7 @@ import CreateForm from '@/components/commons/CreateForm';
 import { caveat } from '@/styles/fonts';
 import s from './AddBookGroup.module.scss';
 
-export default function addBookGroup() {
+export default function AddBookGroup() {
   const [openModal, setOpenModal] = useState(false);
 
   const showModal = () => {
