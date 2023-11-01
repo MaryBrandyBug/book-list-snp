@@ -1,100 +1,32 @@
 @import '@/styles/mixins.scss';
 @import '@/styles/colors.scss';
 
+.root {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 10px 20px 10px 20px;
+  width: 300px;
+  height: 100%;
+  background-color: $white;
+  border-radius: 50px;
+  border: 1px solid $black;
+}
+
+.btnText {
+  font-size: 25px;
+}
+
 .addBtn {
-  position: absolute;
-  top: 200px;
-  left: 23%;
-
   img {
-    width: 80px;
-  }
-}
-
-.arrow {
-  position: absolute;
-  top: 80px;
-  left: 19%;
-  width: 100px;
-  transform: rotate(110deg);
-}
-
-.arrowHeader {
-  position: absolute;
-  top: 50px;
-  left: 17%;
-  color: $gray;
-  font-size: 30px;
-  transform: rotate(8deg);
-}
-
-@include _1500 {
-  .arrow {
-    left: 15%;
-    transform: rotate(90deg);
-  }
-
-  .arrowHeader {
-    left: 2%;
-    transform: rotate(-10deg);
-  }
-
-  .addBtn {
-    top: 170px;
-  }
-}
-
-@include _1120 {
-  .addBtn {
-    left: 46%;
-    top: 300px;
-  }
-
-  .arrow {
-    top: 240px;
-    left: 32%;
-    transform: rotate(70deg);
-  }
-
-  .arrowHeader {
-    top: 220px;
-    left: 11%;
-  }
-}
-
-@include _800 {
-  .arrow {
-    top: 250px;
-    width: 80px;
+    width: 120px;
   }
 }
 
 @include _660 {
   .addBtn {
-    top: 320px;
-
     img {
-      width: 60px;
+      width: 100px;
     }
-  }
-
-  .arrow {
-    transform: rotate(95deg);
-  }
-
-  .arrowHeader {
-    top: 210px;
-    transform: rotate(10deg);
-  }
-}
-
-@include _550 {
-  .arrow {
-    top: 240px;
-    left : 28%;
-  }
-
-  .arrowHeader {
-    font-size: 25px;
   }
 }
