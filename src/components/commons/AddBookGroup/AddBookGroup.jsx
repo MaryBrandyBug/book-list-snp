@@ -3,8 +3,8 @@
 import { useState } from 'react';
 
 import Button from '../Button';
-import Modal from '@/components/commons/Modal';
-import CreateForm from '@/components/commons/CreateForm';
+import Modal from '../Modal';
+import CreateForm from '../CreateForm';
 
 import { caveat } from '@/styles/fonts';
 import s from './AddBookGroup.module.scss';

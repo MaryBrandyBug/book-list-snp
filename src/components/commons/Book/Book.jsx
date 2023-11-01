@@ -5,9 +5,9 @@ import { number, string } from 'prop-types';
 
 import Modal from '../Modal';
 import Button from '../Button';
+import BookPreview from '../BookPreview';
 
 import s from './Book.module.scss';
-import BookPreview from '@/components/commons/BookPreview';
 
 export default function Book({
   title, author, year,
