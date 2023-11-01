@@ -8,7 +8,7 @@ import Modal from '../Modal';
 import Button from '../Button';
 
 import s from './Book.module.scss';
-import BookPreview from '@components/BookPreview';
+import BookPreview from '@/components/commons/BookPreview';
 
 export default function Book({
   title, author, year,

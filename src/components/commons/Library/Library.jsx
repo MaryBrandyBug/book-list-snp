@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 
 import Book from '../Book';
 
-import s from './MainSection.module.scss';
+import s from './Library.module.scss';
 
-export default function MainSection() {
+export default function Library() {
   const allBooks = useSelector((state) => state.books.books);
 
   const library = allBooks.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} />);

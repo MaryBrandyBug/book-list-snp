@@ -3,10 +3,10 @@
 import { useState } from 'react';
 
 import Button from '../Button';
-import Modal from '@components/Modal';
-import CreateForm from '@components/CreateForm';
+import Modal from '@/components/commons/Modal';
+import CreateForm from '@/components/commons/CreateForm';
 
-import { caveat } from '@/app/styles/fonts';
+import { caveat } from '@/styles/fonts';
 import s from './AddBookGroup.module.scss';
 
 export default function addBookGroup() {
