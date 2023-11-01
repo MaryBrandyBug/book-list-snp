@@ -2,18 +2,6 @@
 @import '@/app/styles/mixins.scss';
 
 .root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: $skyBlue;
-}
-
-.content {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -97,13 +85,13 @@
 }
 
 @include _1500 {
-  .content {
+  .root {
     min-width: 600px;
   }
 }
 
 @include _660 {
-  .content {
+  .root {
     padding: 50px;
     min-width: auto;
     width: 90%;

@@ -3,7 +3,8 @@
 import { useState } from 'react';
 
 import Button from '../Button';
-import CreateModal from '../CreateModal';
+import Modal from '@components/Modal';
+import CreateForm from '@components/CreateForm';
 
 import { caveat } from '@/app/styles/fonts';
 import s from './AddBookGroup.module.scss';
@@ -20,7 +21,7 @@ export default function addBookGroup() {
       <p className={`${s.arrowHeader} ${caveat.className}`}>Тыкай сюда чтобы добавить книгу</p>
       <img className={s.arrow} src="/arrow.svg" alt="arrow" />
       <Button img="/buttonAdd.svg" alt="add book button" onClick={showModal} className={s.addBtn} />
-      {openModal && <CreateModal onClick={setOpenModal} />}
+      {openModal && <Modal content={<CreateForm onClick={setOpenModal} />} />}
     </div>
   );
 }
