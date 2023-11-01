@@ -16,6 +16,17 @@ import s from './createForm.module.scss';
 export default function CreateForm({ onClick }) {
   const dispatch = useDispatch();
 
+  const submitData = (values, actions) => {
+    setTimeout(() => {
+      const isValid = validationSchema.isValid(values);
+      if (isValid) {
+        dispatch(addBook(values));
+        onClick();
+      }
+      actions.setSubmitting(false);
+    }, 300);
+  };
+
   return (
     <div className={s.root}>
       <div className={s.header}>
@@ -25,16 +36,7 @@ export default function CreateForm({ onClick }) {
         <Formik
           initialValues={{ title: '', author: '', year: '' }}
           validationSchema={validationSchema}
-          onSubmit={(values, actions) => {
-            setTimeout(() => {
-              const isValid = validationSchema.isValid(values);
-              if (isValid) {
-                dispatch(addBook(values));
-                onClick();
-              }
-              actions.setSubmitting(false);
-            }, 300);
-          }}
+          onSubmit={submitData}
         >
           { ({ handleSubmit }) => (
             <Form className={s.form} onSubmit={handleSubmit}>
