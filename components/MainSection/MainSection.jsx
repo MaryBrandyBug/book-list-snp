@@ -9,11 +9,17 @@ export default function MainSection() {
   const [value, setValue] = useState('');
   const allBooks = useSelector((state) => state.books);
 
-  const library = allBooks.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} />);
-  const filteringResult = allBooks.filter((item) => {
-    const data = [item.title.toLowerCase(), item.author.toLowerCase(), item.year];
-    return data.includes(value.toLowerCase());
+  // фильтруем входящий массив книг, если у нас поле фильрации НЕ пустое, тогда показываем соответствующие критериям поиска книги
+  // если поле фильтрации пустое - обрабатываем весь массив данных
+  const showedBooks = allBooks.filter((book) => {
+    const data = [book.title.toLowerCase(), book.author.toLowerCase(), book.year.toString()];
+    if (value) {
+      return data.some((item) => item.includes(value.toLowerCase()));
+    }
+    return true;
   });
+
+  const library = showedBooks.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} />);
 
   const handleChange = (e) => {
     setValue(e.target.value);
