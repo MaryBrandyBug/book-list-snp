@@ -10,10 +10,10 @@
   gap: 50px;
 }
 
-.searchField {
-  display: flex;
-  justify-content: center;
-}
+// .searchField {
+//   display: flex;
+//   justify-content: center;
+// }
 
 .container {
   display: flex;
@@ -23,28 +23,28 @@
   gap: 50px;
 }
 
-.searchForm {
-  input {
-    padding: 20px;
-    width: 500px;
-    border-radius: 50px;
-    background-color: $white;
-  }
+// .searchForm {
+//   input {
+//     padding: 20px;
+//     width: 500px;
+//     border-radius: 50px;
+//     background-color: $white;
+//   }
 
-  input:focus{
-    border: 1px solid $black;
-  }
-}
+//   input:focus{
+//     border: 1px solid $black;
+//   }
+// }
 
-.searchError {
-  margin-top: 50px;
-  font-size: 25px;
-}
+// .searchError {
+//   margin-top: 50px;
+//   font-size: 25px;
+// }
 
-@include _580 {
-  .searchForm {
-    input {
-      width: 300px;
-    }
-  }
-}
+// @include _580 {
+//   .searchForm {
+//     input {
+//       width: 300px;
+//     }
+//   }
+// }

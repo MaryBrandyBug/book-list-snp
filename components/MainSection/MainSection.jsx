@@ -2,8 +2,11 @@
 
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import s from './mainSection.module.scss';
+
 import Book from '../Book';
+import SearchField from '../SearchField';
+
+import s from './mainSection.module.scss';
 
 export default function MainSection() {
   const [value, setValue] = useState('');
@@ -27,11 +30,7 @@ export default function MainSection() {
 
   return (
     <div className={s.root}>
-      <div className={s.searchField}>
-        <form className={s.searchForm}>
-          <input type="text" placeholder="Начать поиск" onChange={handleChange} />
-        </form>
-      </div>
+      <SearchField handleChange={handleChange} />
       <div className={s.container}>
         {/* если массив library пуст, но при этом мы получаем данные из local storage,
         мы оповещаем пользователя о том, что по его запросу в нашей библиотеке ничего не найдено */}
