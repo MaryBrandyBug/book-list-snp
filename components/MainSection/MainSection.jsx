@@ -33,7 +33,10 @@ export default function MainSection() {
         </form>
       </div>
       <div className={s.container}>
+        {/* если массив library пуст, но при этом мы получаем данные из local storage,
+        мы оповещаем пользователя о том, что по его запросу в нашей библиотеке ничего не найдено */}
         {library}
+        {library.length === 0 && allBooks && <div className={s.searchError}>Ничего не найдено...</div>}
       </div>
     </div>
   );
