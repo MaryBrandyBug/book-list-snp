@@ -2,9 +2,12 @@
 
 import { useState } from 'react';
 import { number, string } from 'prop-types';
-import s from './book.module.scss';
+import Link from 'next/link';
+
 import Modal from '../Modal';
 import Button from '../Button';
+
+import s from './book.module.scss';
 
 export default function Book({
   title, author, year, id,
@@ -24,18 +27,22 @@ export default function Book({
     <div className={s.root}>
       {openPreviewModal && <Modal modalType="show book" title={title} author={author} year={year} onClick={setOpenPreviewModal} />}
       {openEditModal && <Modal modalType="show book editor" id={id} onClick={setOpenEditModal} />}
-      <div className={s.header}>
-        <h2>{title}</h2>
-      </div>
-      <div className={s.content}>
-        <div className={s.container}>
-          <p className={s.info}>{author}</p>
-          <p className={s.info}>{year}</p>
+      <Link href="/id" as={id.toString()} className={s.contentLink}>
+        <div className={s.contentWrapper}>
+          <div className={s.header}>
+            <h2>{title}</h2>
+          </div>
+          <div className={s.content}>
+            <div className={s.container}>
+              <p className={s.info}>{author}</p>
+              <p className={s.info}>{year}</p>
+            </div>
+          </div>
         </div>
-        <div className={s.footer}>
-          <Button img="/edit.svg" alt="edit icon" onClick={showEditor} />
-          <Button img="/eye.svg" alt="zoom icon" onClick={showPreview} />
-        </div>
+      </Link>
+      <div className={s.footer}>
+        <Button img="/edit.svg" alt="edit icon" onClick={showEditor} />
+        <Button img="/eye.svg" alt="zoom icon" onClick={showPreview} />
       </div>
     </div>
   );

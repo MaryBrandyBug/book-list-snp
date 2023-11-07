@@ -2,10 +2,11 @@
 
 import { caveat } from '@/app/styles/fonts';
 import { useState } from 'react';
-import s from './addBookGroup.module.scss';
 
 import Button from '../Button';
 import Modal from '../Modal';
+
+import s from './addBookGroup.module.scss';
 
 export default function addBookGroup() {
   const [openModal, setOpenModal] = useState(false);
