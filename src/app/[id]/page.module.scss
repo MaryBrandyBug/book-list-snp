@@ -9,6 +9,21 @@
   width: 100%;
 }
 
+.backToMainLink {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  font-size: 25px;
+}
+
+.backToMainLink:hover {
+  color: $pinkRose;
+}
+
+.backToMainLink:active {
+  color: $white;
+}
+
 .bookBorder {
   position: relative;
   width: 450px;

@@ -1,6 +1,7 @@
 'use client';
 
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 import s from './page.module.scss';
 
@@ -10,6 +11,7 @@ export default function page({ params: { id } }) {
 
   return (
     <div className={s.root}>
+      <Link href="/" className={s.backToMainLink}>На главную</Link>
       <div className={s.bookBorder}>
         <div className={s.bookContentContainer}>
           <div className={s.authorContainer}>
