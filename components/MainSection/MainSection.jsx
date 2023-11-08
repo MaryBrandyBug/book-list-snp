@@ -1,7 +1,8 @@
 'use client';
 
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import Book from '../Book';
 import SearchField from '../SearchField';
@@ -9,6 +10,8 @@ import SearchField from '../SearchField';
 import s from './mainSection.module.scss';
 
 export default function MainSection() {
+  const router = useRouter();
+
   const [value, setValue] = useState('');
   const allBooks = useSelector((state) => state.books);
 
@@ -28,9 +31,16 @@ export default function MainSection() {
     setValue(e.target.value);
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const encodedValue = encodeURI(value);
+    router.push(`?search=${encodedValue}`);
+  };
+
   return (
     <div className={s.root}>
-      <SearchField handleChange={handleChange} />
+      <SearchField handleChange={handleChange} onSubmit={onSubmit} />
       <div className={s.container}>
         {/* если массив library пуст, но при этом мы получаем данные из local storage,
         мы оповещаем пользователя о том, что по его запросу в нашей библиотеке ничего не найдено */}
