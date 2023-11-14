@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
-import Button from '../Button';
 import Modal from '../Modal';
 import CreateForm from '../CreateForm';
+import Button from '../Button';
 
 import { caveat } from '@/styles/fonts';
 import s from './AddBookGroup.module.scss';
@@ -18,7 +18,7 @@ export default function AddBookGroup() {
 
   return (
     <div className={s.root}>
-      <Button img="/buttonAdd.svg" alt="add book button" onClick={showModal} className={s.addBtn} />
+      <Button onClick={showModal} className={s.addBtn}><img src="/buttonAdd.svg" alt="add book button" /></Button>
       <p className={`${s.btnText} ${caveat.className}`}>Нажми, чтобы добавить книгу</p>
       {openModal && <Modal content={<CreateForm onClick={setOpenModal} />} />}
     </div>

@@ -76,8 +76,8 @@ export default function CreateForm({ onClick }) {
             )}
           </div>
           <div className={s.btnContainer}>
-            <Button text="Сохранить" type="submit" className={s.saveBtn} />
-            <Button text="Отмена" className={s.cancelBtn} onClick={onClick} />
+            <Button type="submit" className={s.saveBtn}>Сохранить</Button>
+            <Button className={s.cancelBtn} onClick={onClick}>Отмена</Button>
           </div>
         </form>
       </div>

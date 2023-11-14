@@ -13,7 +13,7 @@ export default function BookPreview({
     <div className={s.root}>
       <div className={s.header}>
         <h2>{title}</h2>
-        <Button className={s.closeBtn} onClick={onClick} img="/close.svg" alt="close button icon" />
+        <Button className={s.closeBtn} onClick={onClick}><img src="/close.svg" alt="close button icon" /></Button>
       </div>
       <div className={s.container}>
         <div className={s.block}>

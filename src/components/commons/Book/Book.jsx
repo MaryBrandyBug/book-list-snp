@@ -30,8 +30,8 @@ export default function Book({
           <p className={s.info}>{year}</p>
         </div>
         <div className={s.footer}>
-          <Button img="/edit.svg" alt="edit icon" />
-          <Button img="/eye.svg" alt="zoom icon" onClick={showModal} />
+          <Button><img src="/edit.svg" alt="edit icon" /></Button>
+          <Button onClick={showModal}><img src="/eye.svg" alt="zoom icon" /></Button>
         </div>
       </div>
     </div>
