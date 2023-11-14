@@ -20,7 +20,7 @@ export default function AddBookGroup() {
     <div className={s.root}>
       <Button onClick={showModal} className={s.addBtn}><img src="/buttonAdd.svg" alt="add book button" /></Button>
       <p className={`${s.btnText} ${caveat.className}`}>Нажми, чтобы добавить книгу</p>
-      {openModal && <Modal content={<CreateForm onClick={setOpenModal} />} />}
+      {openModal && <Modal><CreateForm onClick={setOpenModal} /></Modal>}
     </div>
   );
 }

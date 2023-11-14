@@ -1,17 +1,17 @@
 'use client';
 
-import { node } from 'prop-types';
+import { any } from 'prop-types';
 
 import s from './Modal.module.scss';
 
-export default function Modal({ content }) {
+export default function Modal({ children }) {
   return (
     <div className={s.root}>
-      {content}
+      {children}
     </div>
   );
 }
 
 Modal.propTypes = {
-  content: node.isRequired,
+  children: any,
 };
