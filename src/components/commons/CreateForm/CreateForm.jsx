@@ -6,6 +6,7 @@ import { useFormik } from 'formik';
 
 import validationSchema from '@/utils/validation';
 import { addBook } from '@/redux/store/slicer/bookSlicer';
+import data from './data';
 
 import Button from '../Button';
 
@@ -27,6 +28,23 @@ export default function CreateForm({ onClick }) {
 
   const formik = useFormik({ initialValues: { title: '', author: '', year: '' }, onSubmit, validationSchema });
 
+  const inputFields = data.map((item) => (
+    <div key={item.id} className={s.inputContainer}>
+      <input
+        type={item.type}
+        name={item.name}
+        placeholder={item.placeholder || ''}
+        maxLength={item.maxLength || ''}
+        className={s.inputField}
+        onChange={formik.handleChange}
+        value={formik.values[item.name]}
+      />
+      {formik.touched[item.name] && formik.errors[item.name] && (
+      <div className={s.errorMessage}>{formik.errors[item.name]}</div>
+      )}
+    </div>
+  ));
+
   return (
     <div className={s.root}>
       <div className={s.header}>
@@ -34,47 +52,7 @@ export default function CreateForm({ onClick }) {
       </div>
       <div className={s.container}>
         <form className={s.form} onSubmit={formik.handleSubmit}>
-          <div className={s.inputContainer}>
-            <input
-              type="text"
-              name="title"
-              placeholder="Название"
-              maxLength="60"
-              className={s.inputField}
-              onChange={formik.handleChange}
-              value={formik.values.email}
-            />
-            {formik.touched.title && formik.errors.title && (
-              <div className={s.errorMessage}>{formik.errors.title}</div>
-            )}
-          </div>
-          <div className={s.inputContainer}>
-            <input
-              type="text"
-              name="author"
-              placeholder="Aвтор"
-              maxLength="60"
-              className={s.inputField}
-              onChange={formik.handleChange}
-              value={formik.values.author}
-            />
-            {formik.touched.author && formik.errors.author && (
-              <div className={s.errorMessage}>{formik.errors.author}</div>
-            )}
-          </div>
-          <div className={s.inputContainer}>
-            <input
-              type="number"
-              name="year"
-              placeholder="Год издания"
-              className={s.inputField}
-              onChange={formik.handleChange}
-              value={formik.values.year}
-            />
-            {formik.touched.year && formik.errors.year && (
-              <div className={s.errorMessage}>{formik.errors.year}</div>
-            )}
-          </div>
+          {inputFields}
           <div className={s.btnContainer}>
             <Button type="submit" className={s.saveBtn}>Сохранить</Button>
             <Button className={s.cancelBtn} onClick={onClick}>Отмена</Button>
