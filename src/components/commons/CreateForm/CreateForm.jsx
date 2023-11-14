@@ -4,7 +4,7 @@ import { func } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 
-import validationSchema from '@/constants/validation';
+import validationSchema from '@/utils/validation';
 import { addBook } from '@/redux/store/slicer/bookSlicer';
 
 import Button from '../Button';

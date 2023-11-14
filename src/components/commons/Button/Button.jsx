@@ -5,7 +5,7 @@ import {
 import Link from 'next/link';
 import cx from 'classnames';
 
-import isExternalLink from '@/constants/isExternalCheck';
+import isExternalLink from '@/utils/isExternalCheck';
 
 import s from './Button.module.scss';
 
