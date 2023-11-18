@@ -12,15 +12,15 @@ import s from './mainSection.module.scss';
 export default function MainSection() {
   const router = useRouter();
 
-  const [value, setValue] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const allBooks = useSelector((state) => state.books);
 
   // фильтруем входящий массив книг, если у нас поле фильрации НЕ пустое, тогда показываем соответствующие критериям поиска книги
   // если поле фильтрации пустое - обрабатываем весь массив данных
   const showedBooks = allBooks.filter((book) => {
     const data = [book.title.toLowerCase(), book.author.toLowerCase(), book.year.toString()];
-    if (value) {
-      return data.some((item) => item.includes(value.toLowerCase()));
+    if (searchQuery) {
+      return data.some((item) => item.includes(searchQuery.toLowerCase()));
     }
     return true;
   });
@@ -28,14 +28,14 @@ export default function MainSection() {
   const library = showedBooks.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} />);
 
   const handleChange = (e) => {
-    setValue(e.target.value);
+    setSearchQuery(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const encodedValue = encodeURI(value);
-    router.push(`?search=${encodedValue}`);
+    const encodedSearchQuery = encodeURI(searchQuery);
+    router.push(`?search=${encodedSearchQuery}`);
   };
 
   return (
