@@ -1,0 +1,100 @@
+@import '@/styles/colors.scss';
+@import '@/styles/mixins.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  width: 20%;
+  height: 350px;
+  background-color: $white;
+  border-radius: 50px;
+  box-shadow: 13px 14px 29px -15px rgba($black, 0.75);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 15px 15px 25px;
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid $black;
+  border-radius: 50px;
+  background-color: $pastelYellow;
+
+  h2 {
+    font-weight: bold;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  width: 90%;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.info {
+  overflow-wrap: break-word;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@include _1500 {
+  .root {
+    width: 30%;
+  }
+}
+
+@include _1120 {
+  .root {
+    width: 40%;
+  }
+}
+
+@include _990 { 
+  .root {
+    width: 45%;
+  }
+}
+
+@include _660 {
+  .root {
+    width: 50%;
+  }
+}
+
+@include _580 {
+  .root {
+    width: 80%;
+  }
+}
+
+@include _460 {
+  .header {
+    h2 {
+      font-size: 14px;
+    }
+  }
+
+  .info {
+    font-size: 14px;
+  }
+}
+
+

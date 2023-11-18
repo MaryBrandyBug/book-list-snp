@@ -1,0 +1,15 @@
+@import '@/styles/mixins.scss';
+
+.root {
+  img {
+    width: 40px;
+  }
+}
+
+@include _580 {
+  .root {
+    img {
+      width: 30px;
+    }
+  }
+}
