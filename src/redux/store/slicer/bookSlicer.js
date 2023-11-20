@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const bookSlice = createSlice({
   name: 'books',
-  initialState: { books: [] },
+  initialState: [],
   reducers: {
     addBook(state, action) {
-      state.books.push({
+      state.push({
         id: new Date().getTime(),
         title: action.payload.title,
         author: action.payload.author,
