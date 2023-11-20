@@ -53,7 +53,7 @@ export default function EditForm({ id, onClick }) {
       <div className={s.header}>
         <h2>Редактирование</h2>
       </div>
-      <Button className={s.closeBtn} onClick={onClick} img="/close.svg" alt="close button icon" />
+      <Button className={s.closeBtn} onClick={onClick}><img src="/close.svg" alt="close button icon" /></Button>
       <div className={s.container}>
         <form className={s.form} onSubmit={formik.handleSubmit} onReset={formik.resetForm}>
           {inputFields}
