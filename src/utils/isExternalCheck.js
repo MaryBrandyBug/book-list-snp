@@ -1,3 +1,4 @@
 export default function isExternalLink(url) {
-  return url !== window.location.host;
+  const regex = /^https?:\/\//;
+  return regex.test(url);
 }
