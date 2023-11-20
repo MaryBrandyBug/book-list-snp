@@ -6,21 +6,28 @@ import { number, string } from 'prop-types';
 import Modal from '../Modal';
 import Button from '../Button';
 import BookPreview from '../BookPreview';
+import EditForm from '../EditForm';
 
 import s from './Book.module.scss';
 
 export default function Book({
-  title, author, year,
+  title, author, year, id,
 }) {
-  const [openModal, setOpenModal] = useState(false);
+  const [openPreviewModal, setOpenPreviewModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
 
   const showModal = () => {
-    setOpenModal(true);
+    setOpenPreviewModal(true);
+  };
+
+  const showEditor = () => {
+    setOpenEditModal(true);
   };
 
   return (
     <div className={s.root}>
-      {openModal && <Modal><BookPreview title={title} author={author} year={year} onClick={setOpenModal} /></Modal>}
+      {openPreviewModal && <Modal><BookPreview title={title} author={author} year={year} onClick={setOpenPreviewModal} /></Modal>}
+      {openEditModal && <Modal><EditForm id={id} onClick={setOpenEditModal} /></Modal>}
       <div className={s.header}>
         <h2>{title}</h2>
       </div>
@@ -30,7 +37,7 @@ export default function Book({
           <p className={s.info}>{year}</p>
         </div>
         <div className={s.footer}>
-          <Button><img src="/edit.svg" alt="edit icon" /></Button>
+          <Button onClick={showEditor}><img src="/edit.svg" alt="edit icon" /></Button>
           <Button onClick={showModal}><img src="/eye.svg" alt="zoom icon" /></Button>
         </div>
       </div>
@@ -42,4 +49,5 @@ Book.propTypes = {
   title: string.isRequired,
   author: string.isRequired,
   year: number.isRequired,
+  id: number.isRequired,
 };
