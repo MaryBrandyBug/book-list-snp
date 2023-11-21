@@ -3,6 +3,7 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useDebounce } from 'use-debounce';
 
 import Book from '../Book';
 import SearchField from '../SearchField';
@@ -13,6 +14,7 @@ export default function MainSection() {
   const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedQuery] = useDebounce(searchQuery, 500);
   const allBooks = useSelector((state) => state.books);
 
   // фильтруем входящий массив книг, если у нас поле фильрации НЕ пустое, тогда показываем соответствующие критериям поиска книги
@@ -31,16 +33,14 @@ export default function MainSection() {
     setSearchQuery(e.target.value);
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    const encodedSearchQuery = encodeURI(searchQuery);
-    router.push(`?search=${encodedSearchQuery}`);
-  };
+  useEffect(() => {
+    if (searchQuery)router.push(`?search=${debouncedQuery}`);
+    if (!searchQuery)router.push('/');
+  }, [debouncedQuery, router]);
 
   return (
     <div className={s.root}>
-      <SearchField handleChange={handleChange} onSubmit={onSubmit} />
+      <SearchField handleChange={handleChange} />
       <div className={s.container}>
         {/* если массив library пуст, но при этом мы получаем данные из local storage,
         мы оповещаем пользователя о том, что по его запросу в нашей библиотеке ничего не найдено */}

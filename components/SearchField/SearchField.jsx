@@ -4,17 +4,16 @@ import { func } from 'prop-types';
 
 import s from './SearchField.module.scss';
 
-export default function SearchField({ handleChange, onSubmit }) {
+export default function SearchField({ handleChange }) {
   return (
     <div className={s.root}>
-      <form className={s.searchForm} onSubmit={onSubmit}>
+      <div className={s.searchForm}>
         <input type="text" placeholder="Начать поиск" onChange={handleChange} />
-      </form>
+      </div>
     </div>
   );
 }
 
 SearchField.propTypes = {
   handleChange: func.isRequired,
-  onSubmit: func,
 };
