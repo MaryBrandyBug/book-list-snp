@@ -7,9 +7,7 @@ import s from './page.module.scss';
 
 export default function page({ params: { id } }) {
   const allBooks = useSelector((state) => state.books);
-  // const book = allBooks.filter((item) => item.id === Number(id))[0];
-  console.log(id);
-  // console.log(allBooks, book);
+  const book = allBooks.filter((item) => item.id === Number(id))[0];
 
   return (
     <div className={s.root}>
@@ -17,15 +15,15 @@ export default function page({ params: { id } }) {
       <div className={s.bookBorder}>
         <div className={s.bookContentContainer}>
           <div className={s.authorContainer}>
-            {/* <p>{book.author}</p> */}
+            <p>{book.author}</p>
           </div>
           <div className={s.titleContainer}>
-            {/* <p>{book.title}</p> */}
+            <p>{book.title}</p>
           </div>
         </div>
         <div className={s.bookSpine} />
         <div className={s.bookPages} />
-        {/* <p className={s.bookYear}>{book.year}</p> */}
+        <p className={s.bookYear}>{book.year}</p>
       </div>
     </div>
   );

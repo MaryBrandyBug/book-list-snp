@@ -2,7 +2,7 @@
 
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
 
 import Book from '../Book';
@@ -17,12 +17,15 @@ export default function MainSection() {
   const [debouncedQuery] = useDebounce(searchQuery, 500);
   const allBooks = useSelector((state) => state.books);
 
+  const searchParams = useSearchParams();
+  const currentQuery = searchParams.get('search');
+
   // фильтруем входящий массив книг, если у нас поле фильрации НЕ пустое, тогда показываем соответствующие критериям поиска книги
   // если поле фильтрации пустое - обрабатываем весь массив данных
   const showedBooks = allBooks.filter((book) => {
     const data = [book.title.toLowerCase(), book.author.toLowerCase(), book.year.toString()];
-    if (searchQuery) {
-      return data.some((item) => item.includes(searchQuery.toLowerCase()));
+    if (currentQuery) {
+      return data.some((item) => item.includes(currentQuery.toLowerCase()));
     }
     return true;
   });
@@ -34,8 +37,8 @@ export default function MainSection() {
   };
 
   useEffect(() => {
-    if (searchQuery)router.push(`?search=${debouncedQuery}`);
-    if (!searchQuery)router.push('/');
+    if (debouncedQuery)router.push(`?search=${debouncedQuery}`);
+    if (!debouncedQuery)router.push('/');
   }, [debouncedQuery, router]);
 
   return (
