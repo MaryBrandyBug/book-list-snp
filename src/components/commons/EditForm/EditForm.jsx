@@ -15,7 +15,7 @@ import s from './EditForm.module.scss';
 
 export default function EditForm({ id, onClick }) {
   const allBooks = useSelector((state) => state.books);
-  const { title, author, year } = allBooks.filter((item) => item.id === id)[0];
+  const { title, author, year } = allBooks.find((item) => item.id === id);
   const dispatch = useDispatch();
 
   const deleteCurrentBook = () => {
