@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import MainSection from '@/components/commons/Library';
 import AddBookGroup from '@/components/commons/AddBookGroup';
 
@@ -8,7 +10,7 @@ export default function HomePage() {
     <main className={s.root}>
       <div className={s.header}>
         <div className={s.pic}>
-          <img src="/star.svg" alt="little star" />
+          <Image src="/star.svg" alt="little star" width={50} height={50} />
         </div>
         <h1>My books</h1>
       </div>
