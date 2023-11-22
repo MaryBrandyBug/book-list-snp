@@ -14,15 +14,17 @@ const bookSlice = createSlice({
     },
     editBook(state, action) {
       const { values, id } = action.payload;
-      const index = state.findIndex((item) => item.id === id);
-      const result = [...state];
-      result[index] = {
-        ...state[index],
-        title: values.title,
-        author: values.author,
-        year: values.year,
-      };
-      return result;
+      return state.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            title: values.title,
+            author: values.author,
+            year: values.year,
+          };
+        }
+        return item;
+      });
     },
     removeBook(state, action) {
       const { id } = action.payload;
