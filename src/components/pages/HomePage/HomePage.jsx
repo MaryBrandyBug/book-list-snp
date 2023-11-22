@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import MainSection from '@/components/commons/Library';
 import AddBookGroup from '@/components/commons/AddBookGroup';
+import SearchField from '@/components/commons/SearchField';
 
 import s from './HomePage.module.scss';
 
@@ -14,8 +15,11 @@ export default function HomePage() {
         </div>
         <h1>My books</h1>
       </div>
-      <AddBookGroup />
-      <MainSection />
+      <div className={s.content}>
+        <AddBookGroup />
+        <SearchField />
+        <MainSection />
+      </div>
     </main>
   );
 }
