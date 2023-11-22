@@ -3,6 +3,7 @@
 import { useSelector } from 'react-redux';
 
 import Book from '../Book';
+import SearchField from '../SearchField';
 
 import s from './Library.module.scss';
 
@@ -13,7 +14,10 @@ export default function Library() {
 
   return (
     <div className={s.root}>
-      {library}
+      <SearchField />
+      <div className={s.content}>
+        {library}
+      </div>
     </div>
   );
 }
