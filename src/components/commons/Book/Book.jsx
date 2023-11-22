@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { number, string } from 'prop-types';
+import Image from 'next/image';
 
 import Modal from '../Modal';
 import Button from '../Button';
@@ -37,8 +38,8 @@ export default function Book({
           <p className={s.info}>{year}</p>
         </div>
         <div className={s.footer}>
-          <Button onClick={showEditor}><img src="/edit.svg" alt="edit icon" /></Button>
-          <Button onClick={showModal}><img src="/eye.svg" alt="zoom icon" /></Button>
+          <Button onClick={showEditor}><Image src="/edit.svg" alt="edit icon" width={50} height={50} /></Button>
+          <Button onClick={showModal}><Image src="/eye.svg" alt="zoom icon" width={50} height={50} /></Button>
         </div>
       </div>
     </div>

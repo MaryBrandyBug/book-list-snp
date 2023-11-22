@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 import Modal from '../Modal';
 import CreateForm from '../CreateForm';
@@ -18,7 +19,7 @@ export default function AddBookGroup() {
 
   return (
     <div className={s.root}>
-      <Button onClick={showModal} className={s.addBtn}><img src="/buttonAdd.svg" alt="add book button" /></Button>
+      <Button onClick={showModal} className={s.addBtn}><Image src="/buttonAdd.svg" alt="add book button" width={120} height={80} /></Button>
       <p className={`${s.btnText} ${caveat.className}`}>Нажми, чтобы добавить книгу</p>
       {openModal && <Modal><CreateForm onClick={setOpenModal} /></Modal>}
     </div>
