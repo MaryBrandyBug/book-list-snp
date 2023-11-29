@@ -2,6 +2,7 @@
 
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { Searcher } from 'fast-fuzzy';
 
 import Book from '../Book';
 import SearchField from '../SearchField';
@@ -12,6 +13,8 @@ export default function Library() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const allBooks = useSelector((state) => state.books);
+
+  const searcher = new Searcher(allBooks, { keySelector: (obj) => [obj.title, obj.author] });
 
   // фильтруем входящий массив книг, если у нас поле фильрации НЕ пустое, тогда показываем соответствующие критериям поиска книги
   // если поле фильтрации пустое - обрабатываем весь массив данных
