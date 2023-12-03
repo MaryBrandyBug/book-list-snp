@@ -7,6 +7,8 @@
 }
 
 .searchForm {
+  position: relative;
+
   input {
     padding: 20px;
     width: 500px;
@@ -17,6 +19,12 @@
 
   input:focus{
     border-color: $black;
+  }
+
+  .resetBtn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
   }
 }
 
@@ -29,6 +37,10 @@
   .searchForm {
     input {
       width: 300px;
+    }
+
+    .resetBtn {
+      top: 15px;
     }
   }
 }

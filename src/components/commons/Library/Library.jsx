@@ -25,6 +25,7 @@ export default function Library() {
   const searchResult = searcher.search(query.search || '').map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} />);
 
   const handleChange = (e) => setSearchQuery(e.target.value);
+  const handleReset = () => setSearchQuery('');
 
   useEffect(() => {
     if (prevSearchQueryRef.current === null) {
@@ -49,7 +50,7 @@ export default function Library() {
 
   return (
     <div className={s.root}>
-      {allBooks.length > 0 && <SearchField handleChange={handleChange} value={searchQuery} />}
+      {allBooks.length > 0 && <SearchField handleChange={handleChange} value={searchQuery} onClick={handleReset} />}
       <div className={s.content}>
         {searchResult.length ? searchResult : library}
       </div>
