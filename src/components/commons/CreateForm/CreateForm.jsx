@@ -10,7 +10,7 @@ import data from './data';
 
 import Button from '../Button';
 
-import s from './createForm.module.scss';
+import s from './CreateForm.module.scss';
 
 export default function CreateForm({ onClick }) {
   const dispatch = useDispatch();
