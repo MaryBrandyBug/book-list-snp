@@ -52,7 +52,9 @@ export default function Library() {
     <div className={s.root}>
       {allBooks.length > 0 && <SearchField handleChange={handleChange} value={searchQuery} onClick={handleReset} />}
       <div className={s.content}>
-        {searchResult.length ? searchResult : library}
+        {query.search && searchResult}
+        {query.search && searchResult.length === 0 && <div>Ничего не найдено...</div>}
+        {!query.search && library}
       </div>
     </div>
   );
