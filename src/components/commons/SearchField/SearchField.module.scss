@@ -1,0 +1,47 @@
+@import '@/styles/colors.scss';
+@import '@/styles/mixins.scss';
+
+.root {
+  display: flex;
+  justify-content: center;
+}
+
+.searchForm {
+  position: relative;
+  z-index: 0;
+
+  input {
+    padding: 20px;
+    width: 500px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    background-color: $white;
+  }
+
+  input:focus{
+    border-color: $black;
+  }
+
+  .resetBtn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+  }
+}
+
+.searchError {
+  margin-top: 50px;
+  font-size: 25px;
+}
+
+@include _580 {
+  .searchForm {
+    input {
+      width: 300px;
+    }
+
+    .resetBtn {
+      top: 15px;
+    }
+  }
+}

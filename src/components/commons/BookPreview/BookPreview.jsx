@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import Button from '../Button';
 
-import s from './bookPreview.module.scss';
+import s from './BookPreview.module.scss';
 
 export default function BookPreview({
   title, author, year, onClick,
