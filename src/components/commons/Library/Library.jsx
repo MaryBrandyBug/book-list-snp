@@ -16,13 +16,11 @@ export default function Library() {
   const { query } = router;
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [books, setBooks] = useState([]);
 
   const allBooks = useSelector((state) => state.books);
 
   const searcher = new Searcher(allBooks, { keySelector: (obj) => [obj.title, obj.author] });
-
-  const library = allBooks.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} />);
-  const searchResult = searcher.search(query.search || '').map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} />);
 
   const handleChange = (e) => setSearchQuery(e.target.value);
   const handleReset = () => setSearchQuery('');
@@ -48,13 +46,21 @@ export default function Library() {
 
   useEffect(() => { if (query.search && !searchQuery) setSearchQuery(query.search); }, [query.search]);
 
+  useEffect(() => {
+    if (searchQuery) {
+      const res = searcher.search(searchQuery);
+      setBooks(res);
+    } else {
+      setBooks(allBooks);
+    }
+  }, [searchQuery]);
+
   return (
     <div className={s.root}>
       {allBooks.length > 0 && <SearchField handleChange={handleChange} value={searchQuery} onClick={handleReset} />}
       <div className={s.content}>
-        {query.search && searchResult}
-        {query.search && searchResult.length === 0 && <div>Ничего не найдено...</div>}
-        {!query.search && library}
+        {books.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} />) }
+        {query.search && books.length === 0 && <div>Ничего не найдено...</div>}
       </div>
     </div>
   );
