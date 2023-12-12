@@ -53,7 +53,7 @@ export default function Library() {
     } else {
       setBooks(allBooks);
     }
-  }, [searchQuery]);
+  }, [searchQuery, allBooks]);
 
   return (
     <div className={s.root}>
