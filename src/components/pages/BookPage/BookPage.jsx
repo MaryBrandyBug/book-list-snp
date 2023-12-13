@@ -3,6 +3,8 @@
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
+import selectBooks from '@/constants/variables';
+
 import Button from '@/components/commons/Button';
 
 import s from './BookPage.module.scss';
@@ -11,7 +13,7 @@ export default function BookPage() {
   const router = useRouter();
   const { id } = router.query;
 
-  const allBooks = useSelector((state) => state.books);
+  const allBooks = useSelector(selectBooks);
   const book = allBooks.find((item) => item.id === Number(id));
 
   return (

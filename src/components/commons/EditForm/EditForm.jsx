@@ -8,13 +8,14 @@ import Image from 'next/image';
 import data from './data';
 import { editBook, removeBook } from '@/redux/store/slicer/bookSlicer';
 import validationSchema from '@/utils/validation';
+import selectBooks from '@/constants/variables';
 
 import Button from '../Button';
 
 import s from './EditForm.module.scss';
 
 export default function EditForm({ id, onClick }) {
-  const allBooks = useSelector((state) => state.books);
+  const allBooks = useSelector(selectBooks);
   const { title, author, year } = allBooks.find((item) => item.id === id);
   const dispatch = useDispatch();
 

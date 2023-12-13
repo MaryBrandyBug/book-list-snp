@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Searcher } from 'fast-fuzzy';
 import { useRouter } from 'next/router';
 
+import selectBooks from '@/constants/variables';
+
 import Book from '../Book';
 import SearchField from '../SearchField';
 
@@ -18,7 +20,7 @@ export default function Library() {
   const [searchQuery, setSearchQuery] = useState('');
   const [books, setBooks] = useState([]);
 
-  const allBooks = useSelector((state) => state.books);
+  const allBooks = useSelector(selectBooks);
 
   const searcher = new Searcher(allBooks, { keySelector: (obj) => [obj.title, obj.author] });
 
