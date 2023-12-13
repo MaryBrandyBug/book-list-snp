@@ -3,11 +3,11 @@
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 
 import Preloader from '@/components/commons/Preloader';
 
 import s from './BookPage.module.scss';
+import Button from '@/components/commons/Button';
 
 export default function BookPage() {
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function BookPage() {
   const [loader, setLoader] = useState(true);
 
   const allBooks = useSelector((state) => state.books);
-  const book = allBooks.filter((item) => item.id === Number(id))[0];
+  const book = allBooks.find((item) => item.id === Number(id));
 
   useEffect(() => {
     setTimeout(() => setLoader(false), 1500);
@@ -27,7 +27,7 @@ export default function BookPage() {
       {loader ? <Preloader />
         : (
           <>
-            <Link href="/" className={s.backToMainLink}>На главную</Link>
+            <Button href="/" className={s.backToMainLink}>На главную</Button>
             <div className={s.bookBorder}>
               <div className={s.bookContentContainer}>
                 <div className={s.authorContainer}>
