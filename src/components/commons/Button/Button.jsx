@@ -54,7 +54,6 @@ const Button = forwardRef(
       return (
         <Link
           href={href}
-          as={as}
           className={classNames}
           ref={ref}
           onMouseLeave={handleMouseLeave}

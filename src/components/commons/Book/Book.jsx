@@ -29,7 +29,7 @@ export default function Book({
     <div className={s.root}>
       {openPreviewModal && <Modal><BookPreview title={title} author={author} year={year} onClick={setOpenPreviewModal} /></Modal>}
       {openEditModal && <Modal><EditForm id={id} onClick={setOpenEditModal} /></Modal>}
-      <Button href="/id" as={id.toString()} className={s.contentLink}>
+      <Button href={`/${id}`} as={id.toString()} className={s.contentLink}>
         <div className={s.contentWrapper}>
           <div className={s.header}>
             <h2>{title}</h2>
