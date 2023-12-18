@@ -15,26 +15,36 @@ export default function BookPage() {
 
   const allBooks = useSelector(selectBooks);
   const book = allBooks.find((item) => item.id === Number(id));
-
+  console.log(book);
   return (
     <div className={s.root}>
       { book && (
-      <>
-        <Button href="/" className={s.backToMainLink}>На главную</Button>
-        <div className={s.bookBorder}>
-          <div className={s.bookContentContainer}>
-            <div className={s.authorContainer}>
-              <p>{book.author}</p>
+        <>
+          <Button href="/" className={s.backToMainLink}>На главную</Button>
+          <div className={s.bookBorder}>
+            <div className={s.bookContentContainer}>
+              <div className={s.authorContainer}>
+                <p>{book.author}</p>
+              </div>
+              <div className={s.titleContainer}>
+                <p>{book.title}</p>
+              </div>
             </div>
-            <div className={s.titleContainer}>
-              <p>{book.title}</p>
-            </div>
+            <div className={s.bookSpine} />
+            <div className={s.bookPages} />
+            <p className={s.bookYear}>{book.year}</p>
           </div>
-          <div className={s.bookSpine} />
-          <div className={s.bookPages} />
-          <p className={s.bookYear}>{book.year}</p>
-        </div>
-      </>
+        </>
+      )}
+      { !book && (
+      <div className={s.notFound}>
+        <p>Такой книги не существует...</p>
+        <p>
+          <Button href="/">Кликнуть</Button>
+          {' '}
+          и вернуться на главную
+        </p>
+      </div>
       )}
     </div>
   );
