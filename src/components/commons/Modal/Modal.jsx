@@ -1,12 +1,13 @@
 'use client';
 
-import { any } from 'prop-types';
+import { any, string } from 'prop-types';
+import cx from 'classnames';
 
 import s from './Modal.module.scss';
 
-export default function Modal({ children }) {
+export default function Modal({ children, className }) {
   return (
-    <div className={s.root}>
+    <div className={cx([s.root], className)}>
       {children}
     </div>
   );
@@ -14,4 +15,5 @@ export default function Modal({ children }) {
 
 Modal.propTypes = {
   children: any,
+  className: string,
 };
