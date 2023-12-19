@@ -1,6 +1,6 @@
 'use client';
 
-import { func, number, string } from 'prop-types';
+import { func, object } from 'prop-types';
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
@@ -9,8 +9,10 @@ import Button from '../Button';
 import s from './BookPreview.module.scss';
 
 export default function BookPreview({
-  title, author, year, onClick,
+  content, onClick,
 }) {
+  const { title, author, year } = content;
+
   const handleClickOutside = () => {
     onClick();
   };
@@ -57,8 +59,6 @@ export default function BookPreview({
 }
 
 BookPreview.propTypes = {
-  title: string.isRequired,
-  author: string.isRequired,
-  year: number.isRequired,
+  content: object.isRequired,
   onClick: func,
 };

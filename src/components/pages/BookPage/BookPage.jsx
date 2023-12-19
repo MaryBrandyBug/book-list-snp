@@ -15,7 +15,7 @@ export default function BookPage() {
 
   const allBooks = useSelector(selectBooks);
   const book = allBooks.find((item) => item.id === Number(id));
-  console.log(book);
+
   return (
     <div className={s.root}>
       { book && (
