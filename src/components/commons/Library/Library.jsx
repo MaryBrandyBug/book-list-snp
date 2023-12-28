@@ -11,6 +11,7 @@ import Book from '../Book';
 import SearchField from '../SearchField';
 import BookPreview from '../BookPreview';
 import Modal from '../Modal';
+import EditForm from '../EditForm';
 
 import s from './Library.module.scss';
 
@@ -20,6 +21,7 @@ export default function Library() {
   const { query } = router;
 
   const [openPreviewModal, setOpenPreviewModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [books, setBooks] = useState([]);
@@ -62,7 +64,8 @@ export default function Library() {
   }, [searchQuery, allBooks]);
 
   const closeModal = () => {
-    setOpenPreviewModal(false);
+    if (openPreviewModal) setOpenPreviewModal(false);
+    if (openEditModal) setOpenEditModal(false);
   };
 
   const previewContent = (content) => {
@@ -70,12 +73,18 @@ export default function Library() {
     setModalContent(content);
   };
 
+  const editContent = (content) => {
+    setOpenEditModal(true);
+    setModalContent(content);
+  };
+
   return (
     <div className={s.root}>
       {openPreviewModal && <Modal className={s.background}><BookPreview content={modalContent} onClick={closeModal} /></Modal>}
+      {openEditModal && <Modal><EditForm content={modalContent} onClick={closeModal} /></Modal>}
       {allBooks.length > 0 && <SearchField handleChange={handleChange} value={searchQuery} onClick={handleReset} />}
       <div className={s.content}>
-        {books.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} previewContent={previewContent} />) }
+        {books.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} previewContent={previewContent} editContent={editContent} />) }
         {query.search && books.length === 0 && <div>Ничего не найдено...</div>}
       </div>
     </div>

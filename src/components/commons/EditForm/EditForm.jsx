@@ -1,6 +1,6 @@
 'use client';
 
-import { func, number } from 'prop-types';
+import { func, object } from 'prop-types';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
@@ -14,8 +14,9 @@ import Button from '../Button';
 
 import s from './EditForm.module.scss';
 
-export default function EditForm({ id, onClick }) {
+export default function EditForm({ content, onClick }) {
   const allBooks = useSelector(selectBooks);
+  const { id } = content;
   const { title, author, year } = allBooks.find((item) => item.id === id);
   const dispatch = useDispatch();
 
@@ -71,6 +72,6 @@ export default function EditForm({ id, onClick }) {
 }
 
 EditForm.propTypes = {
-  id: number.isRequired,
+  content: object.isRequired,
   onClick: func,
 };
