@@ -8,13 +8,19 @@ import selectBooks from '@/constants/variables';
 import Button from '@/components/commons/Button';
 
 import s from './BookPage.module.scss';
+import { useEffect } from 'react';
 
 export default function BookPage() {
   const router = useRouter();
+
   const { id } = router.query;
 
   const allBooks = useSelector(selectBooks);
-  const book = allBooks.find((item) => item.id === Number(id));
+  const book = id && allBooks.find((item) => item.id === Number(id));
+
+  useEffect(() => {
+    if (!book && id) router.push('/404');
+  }, [book, id]);
 
   return (
     <div className={s.root}>
@@ -35,16 +41,6 @@ export default function BookPage() {
             <p className={s.bookYear}>{book.year}</p>
           </div>
         </>
-      )}
-      { !book && (
-      <div className={s.notFound}>
-        <p>Такой книги не существует...</p>
-        <p>
-          <Button href="/">Кликнуть</Button>
-          {' '}
-          и вернуться на главную
-        </p>
-      </div>
       )}
     </div>
   );
