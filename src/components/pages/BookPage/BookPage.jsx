@@ -1,26 +1,30 @@
 'use client';
 
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-
-import selectBooks from '@/constants/variables';
 
 import Button from '@/components/commons/Button';
 
 import s from './BookPage.module.scss';
-import { useEffect } from 'react';
 
 export default function BookPage() {
   const router = useRouter();
 
   const { id } = router.query;
 
-  const allBooks = useSelector(selectBooks);
-  const book = id && allBooks.find((item) => item.id === Number(id));
+  const [book, setBook] = useState();
 
   useEffect(() => {
-    if (!book && id) router.push('/404');
-  }, [book, id]);
+    if (!id) {
+      return;
+    }
+    const fetchSomethingById = async () => {
+      const res = await fetch(`http://localhost:8000/books/${id}`);
+      const req = await res.json();
+      setBook(req);
+    };
+    fetchSomethingById();
+  }, [id]);
 
   return (
     <div className={s.root}>

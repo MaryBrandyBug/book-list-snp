@@ -22,7 +22,7 @@ export default function Book({
 
   return (
     <div className={s.root}>
-      <Button href={`/${id}`} as={id.toString()} className={s.contentLink}>
+      <Button href={`/${id}`} as={id} className={s.contentLink}>
         <div className={s.contentWrapper}>
           <div className={s.header}>
             <h2>{title}</h2>
@@ -47,7 +47,7 @@ Book.propTypes = {
   title: string.isRequired,
   author: string.isRequired,
   year: number.isRequired,
-  id: number.isRequired,
+  id: string.isRequired,
   previewContent: func,
   editContent: func,
 };
