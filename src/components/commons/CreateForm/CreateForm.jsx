@@ -19,6 +19,13 @@ export default function CreateForm({ onClick }) {
     setTimeout(() => {
       const isValid = validationSchema.isValid(values);
       if (isValid) {
+        fetch('http://localhost:8000/books', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
+        });
         dispatch(addBook(values));
         onClick();
       }
