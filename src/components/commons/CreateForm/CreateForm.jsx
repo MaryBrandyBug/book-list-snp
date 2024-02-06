@@ -25,8 +25,9 @@ export default function CreateForm({ onClick }) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(values),
-        });
-        dispatch(addBook(values));
+        })
+          .then((res) => res.json())
+          .then((res) => dispatch(addBook(res)));
         onClick();
       }
       actions.setSubmitting(false);

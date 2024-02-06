@@ -36,11 +36,8 @@ export default function EditForm({ content, onClick }) {
           },
           body: JSON.stringify(values),
         });
-
-        dispatch(editBook({
-          values,
-          id,
-        }));
+        // .then((res) => res.json())
+        // .then((res) => dispatch(editBook(res)));
         onClick();
       }
       actions.setSubmitting(false);

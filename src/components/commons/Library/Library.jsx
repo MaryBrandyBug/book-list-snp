@@ -1,6 +1,6 @@
 'use client';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { Searcher } from 'fast-fuzzy';
 import { useRouter } from 'next/router';
@@ -19,18 +19,13 @@ export default function Library() {
   const router = useRouter();
   const prevSearchQueryRef = useRef(null);
   const { query } = router;
+  const dispatch = useDispatch();
 
   const [openPreviewModal, setOpenPreviewModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [books, setBooks] = useState([]);
-
-  const [library, setLibrary] = useState();
-
-  const allBooks = useSelector(selectBooks);
-
-  const searcher = new Searcher(allBooks, { keySelector: (obj) => [obj.title, obj.author] });
 
   const handleChange = (e) => setSearchQuery(e.target.value);
   const handleReset = () => setSearchQuery('');
@@ -57,13 +52,21 @@ export default function Library() {
   useEffect(() => { if (query.search && !searchQuery) setSearchQuery(query.search); }, [query.search]);
 
   useEffect(() => {
+    dispatch({ type: 'books/fetchBooks' });
+  }, [dispatch]);
+
+  const currentBooks = useSelector(selectBooks);
+
+  const searcher = new Searcher(currentBooks, { keySelector: (obj) => [obj.title, obj.author] });
+
+  useEffect(() => {
     if (searchQuery) {
       const res = searcher.search(searchQuery);
       setBooks(res);
     } else {
-      setBooks(allBooks);
+      setBooks(currentBooks);
     }
-  }, [searchQuery, allBooks]);
+  }, [searchQuery, currentBooks]);
 
   const closeModal = () => {
     if (openPreviewModal) setOpenPreviewModal(false);
@@ -80,19 +83,13 @@ export default function Library() {
     setModalContent(content);
   };
 
-  useEffect(() => {
-    fetch('http://localhost:8000/books')
-      .then((res) => res.json())
-      .then((res) => setLibrary(res));
-  }, []);
-
   return (
     <div className={s.root}>
       {openPreviewModal && <Modal className={s.background}><BookPreview content={modalContent} onClick={closeModal} /></Modal>}
       {openEditModal && <Modal><EditForm content={modalContent} onClick={closeModal} /></Modal>}
-      {allBooks.length > 0 && <SearchField handleChange={handleChange} value={searchQuery} onClick={handleReset} />}
+      {currentBooks.length > 0 && <SearchField handleChange={handleChange} value={searchQuery} onClick={handleReset} />}
       <div className={s.content}>
-        {library?.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} previewContent={previewContent} editContent={editContent} />) }
+        {currentBooks?.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} previewContent={previewContent} editContent={editContent} />) }
         {query.search && books.length === 0 && <div>Ничего не найдено...</div>}
       </div>
     </div>

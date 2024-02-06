@@ -5,7 +5,7 @@ import ReduxProvider from '@/redux/store/Provider';
 export default function RootLayout({ children }) {
   return (
     <ReduxProvider>
-      {children}
+      { children }
     </ReduxProvider>
   );
 }

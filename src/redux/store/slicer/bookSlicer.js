@@ -4,35 +4,29 @@ const bookSlice = createSlice({
   name: 'books',
   initialState: [],
   reducers: {
+    allBooks(state, action) {
+      return action.payload;
+    },
     addBook(state, action) {
-      state.push({
-        id: new Date().getTime(),
-        title: action.payload.title,
-        author: action.payload.author,
-        year: action.payload.year,
-      });
+      state.push(action.payload);
     },
     editBook(state, action) {
       const { values, id } = action.payload;
-      return state.map((item) => {
-        if (item.id === id) {
-          return {
-            ...item,
-            title: values.title,
-            author: values.author,
-            year: values.year,
-          };
-        }
-        return item;
-      });
+      const book = state.find((item) => item.id === id);
+      if (book) {
+        book.title = values.title;
+        book.author = values.author;
+        book.year = values.year;
+      }
     },
     removeBook(state, action) {
       const { id } = action.payload;
-      const newLibrary = state.filter((item) => item.id !== id);
-      return newLibrary;
+      return state.filter((item) => item.id !== id);
     },
   },
 });
 
-export const { addBook, editBook, removeBook } = bookSlice.actions;
+export const {
+  allBooks, addBook, editBook, removeBook,
+} = bookSlice.actions;
 export default bookSlice.reducer;
