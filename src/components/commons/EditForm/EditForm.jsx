@@ -21,7 +21,15 @@ export default function EditForm({ content, onClick }) {
   const dispatch = useDispatch();
 
   const deleteCurrentBook = () => {
-    dispatch(removeBook({ id }));
+    fetch(`http://localhost:8000/books/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(id),
+    })
+      .then((res) => res.json())
+      .then((res) => dispatch(removeBook(res)));
     onClick();
   };
 
@@ -35,9 +43,9 @@ export default function EditForm({ content, onClick }) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(values),
-        });
-        // .then((res) => res.json())
-        // .then((res) => dispatch(editBook(res)));
+        })
+          .then((res) => res.json())
+          .then((res) => dispatch(editBook(res)));
         onClick();
       }
       actions.setSubmitting(false);

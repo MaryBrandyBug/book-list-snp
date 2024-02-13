@@ -11,12 +11,14 @@ const bookSlice = createSlice({
       state.push(action.payload);
     },
     editBook(state, action) {
-      const { values, id } = action.payload;
+      const {
+        title, author, year, id,
+      } = action.payload;
       const book = state.find((item) => item.id === id);
       if (book) {
-        book.title = values.title;
-        book.author = values.author;
-        book.year = values.year;
+        book.title = title;
+        book.author = author;
+        book.year = year;
       }
     },
     removeBook(state, action) {
