@@ -9,8 +9,9 @@ const bookSlice = createSlice({
     },
     editBook(state, action) {
       const {
-        title, author, year, id,
+        id, edits,
       } = action.payload;
+      const { title, author, year } = edits;
       const book = state.find((item) => item.id === id);
       if (book) {
         book.title = title;

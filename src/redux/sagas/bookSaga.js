@@ -32,6 +32,20 @@ function addBookApi(newBook) {
     .catch((err) => ({ err }));
 }
 
+function editBookApi(id, editedData) {
+  return fetch(`http://localhost:8000/books/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(editedData),
+  })
+    .then(statusHelper)
+    .then((response) => response.json())
+    .then((res) => res)
+    .catch((err) => ({ err }));
+}
+
 function* fetchBooksSaga() {
   try {
     const books = yield call(fetchBooksApi);
@@ -51,9 +65,19 @@ function* addBookSaga({ payload }) {
   }
 }
 
+function* editBookSaga({ payload }) {
+  try {
+    const { id, edits } = payload;
+    yield call(editBookApi, id, edits);
+  } catch (e) {
+    yield put({ type: 'EDIT_BOOK_FAILED', message: e.message });
+  }
+}
+
 function* booksSaga() {
   yield takeLatest('books/fetchBooks', fetchBooksSaga);
   yield takeLatest('books/addBook', addBookSaga);
+  yield takeLatest('books/editBook', editBookSaga);
 }
 
 export default booksSaga;

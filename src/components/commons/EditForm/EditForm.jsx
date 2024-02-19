@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
 
 import data from './data';
-import { editBook, removeBook } from '@/redux/store/slicer/bookSlicer';
+import { removeBook } from '@/redux/store/slicer/bookSlicer';
 import validationSchema from '@/utils/validation';
 import selectBooks from '@/constants/variables';
 
@@ -19,6 +19,11 @@ export default function EditForm({ content, onClick }) {
   const { id } = content;
   const { title, author, year } = allBooks.find((item) => item.id === id);
   const dispatch = useDispatch();
+
+  const editBookAction = (edits) => ({
+    type: 'books/editBook',
+    payload: { id, edits },
+  });
 
   const deleteCurrentBook = () => {
     fetch(`http://localhost:8000/books/${id}`, {
@@ -34,22 +39,13 @@ export default function EditForm({ content, onClick }) {
   };
 
   const onSubmit = (values, actions) => {
-    setTimeout(() => {
-      const isValid = validationSchema.isValid(values);
-      if (isValid) {
-        fetch(`http://localhost:8000/books/${id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(values),
-        })
-          .then((res) => res.json())
-          .then((res) => dispatch(editBook(res)));
-        onClick();
-      }
-      actions.setSubmitting(false);
-    }, 300);
+    const isValid = validationSchema.isValid(values);
+    if (isValid) {
+      dispatch(editBookAction(values));
+      onClick();
+    }
+
+    actions.setSubmitting(false);
   };
 
   const formik = useFormik({ initialValues: { title, author, year }, onSubmit, validationSchema });
