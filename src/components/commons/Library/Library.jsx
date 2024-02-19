@@ -56,13 +56,12 @@ export default function Library() {
   }, [dispatch]);
 
   const currentBooks = useSelector(selectBooks);
-
-  const searcher = new Searcher(currentBooks, { keySelector: (obj) => [obj.title, obj.author] });
+  // const searcher = new Searcher(currentBooks, { keySelector: (obj) => [obj.title, obj.author] });
 
   useEffect(() => {
     if (searchQuery) {
-      const res = searcher.search(searchQuery);
-      setBooks(res);
+      // const res = searcher.search(searchQuery);
+      // setBooks(res);
     } else {
       setBooks(currentBooks);
     }

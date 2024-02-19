@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 
 import validationSchema from '@/utils/validation';
-import { addBook } from '@/redux/store/slicer/bookSlicer';
 import data from './data';
 
 import Button from '../Button';
@@ -15,23 +14,18 @@ import s from './CreateForm.module.scss';
 export default function CreateForm({ onClick }) {
   const dispatch = useDispatch();
 
-  const onSubmit = (values, actions) => {
-    setTimeout(() => {
-      const isValid = validationSchema.isValid(values);
-      if (isValid) {
-        fetch('http://localhost:8000/books', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(values),
-        })
-          .then((res) => res.json())
-          .then((res) => dispatch(addBook(res)));
-        onClick();
-      }
-      actions.setSubmitting(false);
-    }, 300);
+  const addBookAction = (newBook) => ({
+    type: 'books/addBook',
+    payload: newBook,
+  });
+
+  const onSubmit = async (values, actions) => {
+    const isValid = await validationSchema.isValid(values);
+    if (isValid) {
+      dispatch(addBookAction(values));
+      onClick();
+    }
+    actions.setSubmitting(false);
   };
 
   const formik = useFormik({ initialValues: { title: '', author: '', year: '' }, onSubmit, validationSchema });
