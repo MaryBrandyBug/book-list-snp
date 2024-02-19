@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Image from 'next/image';
 
 import data from './data';
-import { removeBook } from '@/redux/store/slicer/bookSlicer';
 import validationSchema from '@/utils/validation';
 import selectBooks from '@/constants/variables';
 
@@ -26,15 +25,7 @@ export default function EditForm({ content, onClick }) {
   });
 
   const deleteCurrentBook = () => {
-    fetch(`http://localhost:8000/books/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(id),
-    })
-      .then((res) => res.json())
-      .then((res) => dispatch(removeBook(res)));
+    dispatch({ type: 'books/removeBook', payload: id });
     onClick();
   };
 

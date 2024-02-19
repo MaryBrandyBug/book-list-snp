@@ -46,6 +46,17 @@ function editBookApi(id, editedData) {
     .catch((err) => ({ err }));
 }
 
+function deleteBookApi(id) {
+  return fetch(`http://localhost:8000/books/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(id),
+  })
+    .then((res) => res.json());
+}
+
 function* fetchBooksSaga() {
   try {
     const books = yield call(fetchBooksApi);
@@ -74,10 +85,19 @@ function* editBookSaga({ payload }) {
   }
 }
 
+function* deleteBookSaga({ payload }) {
+  try {
+    yield call(deleteBookApi, payload);
+  } catch (e) {
+    yield put({ type: 'DELETE_BOOK_FAILED', message: e.message });
+  }
+}
+
 function* booksSaga() {
   yield takeLatest('books/fetchBooks', fetchBooksSaga);
   yield takeLatest('books/addBook', addBookSaga);
   yield takeLatest('books/editBook', editBookSaga);
+  yield takeLatest('books/removeBook', deleteBookSaga);
 }
 
 export default booksSaga;

@@ -20,7 +20,7 @@ const bookSlice = createSlice({
       }
     },
     removeBook(state, action) {
-      const { id } = action.payload;
+      const id = action.payload;
       return state.filter((item) => item.id !== id);
     },
   },
