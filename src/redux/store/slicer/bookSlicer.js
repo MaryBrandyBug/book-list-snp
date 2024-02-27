@@ -4,13 +4,13 @@ const bookSlice = createSlice({
   name: 'books',
   initialState: [],
   reducers: {
-    allBooks(state, action) {
-      return action.payload;
+    allBooks(state, { payload }) {
+      return payload;
     },
-    editBook(state, action) {
+    editBook(state, { payload }) {
       const {
         id, edits,
-      } = action.payload;
+      } = payload;
       const { title, author, year } = edits;
       const book = state.find((item) => item.id === id);
       if (book) {
@@ -19,14 +19,17 @@ const bookSlice = createSlice({
         book.year = year;
       }
     },
-    removeBook(state, action) {
-      const id = action.payload;
+    removeBook(state, payload) {
+      const id = payload;
       return state.filter((item) => item.id !== id);
+    },
+    addBook(state, { payload }) {
+      state.push(payload);
     },
   },
 });
 
 export const {
-  allBooks, editBook, removeBook,
+  allBooks, editBook, removeBook, addBook,
 } = bookSlice.actions;
 export default bookSlice.reducer;
