@@ -56,12 +56,12 @@ export default function Library() {
   }, [dispatch]);
 
   const currentBooks = useSelector(selectBooks);
-  // const searcher = new Searcher(currentBooks, { keySelector: (obj) => [obj.title, obj.author] });
+  const searcher = new Searcher(currentBooks, { keySelector: (obj) => [obj.title, obj.author] });
 
   useEffect(() => {
     if (searchQuery) {
-      // const res = searcher.search(searchQuery);
-      // setBooks(res);
+      const res = searcher.search(searchQuery);
+      setBooks(res);
     } else {
       setBooks(currentBooks);
     }
@@ -88,7 +88,7 @@ export default function Library() {
       {openEditModal && <Modal><EditForm content={modalContent} onClick={closeModal} /></Modal>}
       {currentBooks.length > 0 && <SearchField handleChange={handleChange} value={searchQuery} onClick={handleReset} />}
       <div className={s.content}>
-        {currentBooks?.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} previewContent={previewContent} editContent={editContent} />) }
+        {books?.map((book) => <Book title={book.title} author={book.author} year={book.year} key={book.id} id={book.id} previewContent={previewContent} editContent={editContent} />) }
         {query.search && books.length === 0 && <div>Ничего не найдено...</div>}
       </div>
     </div>
