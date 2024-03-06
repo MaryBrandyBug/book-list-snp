@@ -19,7 +19,7 @@ export default function BookPage() {
       return;
     }
     const fetchSomethingById = async () => {
-      const res = await fetch(`http://localhost:8000/books/${id}`);
+      const res = await fetch(`https://book-db-1.onrender.com/books/${id}`);
       const req = await res.json();
       setBook(req);
     };

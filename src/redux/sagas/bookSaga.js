@@ -9,7 +9,7 @@ function statusHelper(response) {
 }
 
 function fetchBooksApi() {
-  return fetch('http://localhost:8000/books')
+  return fetch('https://book-db-1.onrender.com/books')
     .then((res) => {
       if (!res.ok) {
         throw new Error('Network response was not ok');
@@ -19,7 +19,7 @@ function fetchBooksApi() {
 }
 
 function editBookApi(id, editedData) {
-  return fetch(`http://localhost:8000/books/${id}`, {
+  return fetch(`https://book-db-1.onrender.com/books/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -33,11 +33,8 @@ function editBookApi(id, editedData) {
 }
 
 function deleteBookApi(id) {
-  return fetch(`http://localhost:8000/books/${id}`, {
+  return fetch(`https://book-db-1.onrender.com/books/${id}`, {
     method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(id),
   })
     .then((res) => res.json());

@@ -18,7 +18,7 @@ export default function CreateForm({ onClick }) {
   const onSubmit = async (values, actions) => {
     const isValid = await validationSchema.isValid(values);
     if (isValid) {
-      fetch('http://localhost:8000/books', {
+      fetch('https://book-db-1.onrender.com/books', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

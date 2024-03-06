@@ -7,7 +7,7 @@ export default function page() {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('http://localhost:8000/books');
+  const res = await fetch('https://book-db-1.onrender.com/books');
   const id = await res.json();
 
   const paths = id.map((i) => ({
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   try {
-    const res = await fetch(`http://localhost:8000/books/${params.id}`);
+    const res = await fetch(`https://book-db-1.onrender.com/books/${params.id}`);
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
