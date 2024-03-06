@@ -31,8 +31,6 @@ export async function getStaticProps({ params }) {
       },
     };
   } catch (error) {
-    console.error('Error fetching data:', error);
-
     return {
       notFound: true,
     };
