@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { func } from 'prop-types';
+import { any, func } from 'prop-types';
 
 import RootLayout from './layout';
 
@@ -7,7 +7,7 @@ import '../styles/globals.scss';
 import '../styles/reset.scss';
 import { comfortaa } from '../styles/fonts';
 
-export default function MyApp({ Component }) {
+export default function MyApp({ Component, pageProps }) {
   return (
     <RootLayout>
       <Head>
@@ -15,7 +15,7 @@ export default function MyApp({ Component }) {
         <meta name="description" content="Your awesome books" />
       </Head>
       <main className={comfortaa.className}>
-        <Component />
+        <Component {...pageProps} />
       </main>
     </RootLayout>
   );
@@ -23,4 +23,5 @@ export default function MyApp({ Component }) {
 
 MyApp.propTypes = {
   Component: func,
+  pageProps: any,
 };

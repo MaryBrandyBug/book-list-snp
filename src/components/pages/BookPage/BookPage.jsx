@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { object } from 'prop-types';
 
 import Button from '@/components/commons/Button';
 
 import s from './BookPage.module.scss';
 
-export default function BookPage() {
+export default function BookPage({ currentBook }) {
   const router = useRouter();
 
   const { id } = router.query;
@@ -18,12 +19,8 @@ export default function BookPage() {
     if (!id) {
       return;
     }
-    const fetchSomethingById = async () => {
-      const res = await fetch(`https://book-db-1.onrender.com/books/${id}`);
-      const req = await res.json();
-      setBook(req);
-    };
-    fetchSomethingById();
+
+    setBook(currentBook);
   }, [id]);
 
   return (
@@ -49,3 +46,7 @@ export default function BookPage() {
     </div>
   );
 }
+
+BookPage.propTypes = {
+  currentBook: object,
+};

@@ -1,8 +1,8 @@
 import BookPage from '@/components/pages/BookPage';
 
-export default function page() {
+export default function page({ book }) {
   return (
-    <BookPage />
+    <BookPage currentBook={book} />
   );
 }
 
@@ -23,12 +23,10 @@ export async function getStaticProps({ params }) {
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
-    const id = await res.json();
+    const book = await res.json();
 
     return {
-      props: {
-        id,
-      },
+      props: { book },
     };
   } catch (error) {
     return {
